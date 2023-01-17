@@ -4,9 +4,11 @@ import {
 } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import userReducer from './user/userSlice';
+import carReducer from './cars/carSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
+  cars: carReducer,
 });
 
 const store = configureStore(
