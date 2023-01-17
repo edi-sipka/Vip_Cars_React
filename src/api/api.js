@@ -70,6 +70,31 @@ const api = {
       error: 'Failed to logout',
     };
   },
+
+  // Get all car
+  getAllCars: async () => {
+    const response = await fetch(`${baseURL}api/v1/cars`);
+    const data = await response.json();
+    return data;
+  },
+
+  // Get a specific car
+  getCar: async (carId) => {
+    const response = await fetch(`${baseURL}api/v1/cars/${carId}`);
+    const data = await response.json();
+    return data;
+  },
+
+  // Add a new car
+  addCar: async (car) => {
+    const response = await fetch(`${baseURL}api/v1/cars`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ car }),
+    });
+    const data = await response.json();
+    return data;
+  },
 };
 
 export default api;
