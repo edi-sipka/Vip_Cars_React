@@ -60,7 +60,7 @@ const api = {
         status: 'failed', // 'loading', 'successful', 'failed'
         login: false, // true if logged in
         message: 'Login failed',
-        error: data.message,
+        error: data.error,
       };
     }
 
