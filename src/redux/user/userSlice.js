@@ -83,6 +83,7 @@ const userSlice = createSlice({
         ...state,
         status: 'loading',
         message: '',
+        error: null,
       }))
       .addCase(signInUser.fulfilled, (state, action) => ({
         ...state,
@@ -102,6 +103,7 @@ const userSlice = createSlice({
         ...state,
         message: '',
         status: 'loading',
+        error: null,
       }))
       .addCase(signOutUser.fulfilled, (state, action) => ({
         ...state,
@@ -120,6 +122,7 @@ const userSlice = createSlice({
         ...state,
         status: 'loading',
         message: '',
+        error: null,
       }))
       .addCase(getAuthUser.fulfilled, (state, action) => ({
         ...state,
@@ -140,6 +143,7 @@ const userSlice = createSlice({
 export const currentUser = (state) => (state.userStore.currentUser);
 export const userStatus = (state) => (state.userStore.status);
 export const userMessage = (state) => (state.userStore.message);
+export const userError = (state) => (state.userStore.error);
 export const sessionStatus = (state) => (state.userStore.login);
 
 export default userSlice.reducer;
