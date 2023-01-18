@@ -161,6 +161,41 @@ const api = {
     const data = await response.json();
     return data;
   },
+
+  // Get all reservations
+  getAllReservation: async (userId) => {
+    const response = await fetch(`${baseURL}users/${userId}/reservations`);
+    const data = await response.json();
+    return data;
+  },
+
+  // Get a specific reservation
+  getReservation: async (userId, resId) => {
+    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`);
+    const data = await response.json();
+    return data;
+  },
+
+  // Add a new reservation
+  addReservation: async (userId, reservation) => {
+    const response = await fetch(`${baseURL}users/${userId}/reservations`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reservation }),
+    });
+    const data = await response.json();
+    return data;
+  },
+
+  // Remove a reservation
+  removeReservation: async (userId, resId) => {
+    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`, {
+      method: 'DELETE',
+      headers: { Authorization: localStorage.getItem('authToken') },
+    });
+    const data = await response.json();
+    return data;
+  },
 };
 
 export default api;
