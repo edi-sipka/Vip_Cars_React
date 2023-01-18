@@ -14,6 +14,7 @@ const initialState = {
 const REGISTER = 'REGISTER';
 const SIGN_IN = 'SIGN_IN';
 const SIGN_OUT = 'SIGN_OUT';
+const AUTH_USER = 'AUTH_USER';
 
 // User Registration Action
 export const registerUser = createAsyncThunk(REGISTER, async (user) => {
@@ -42,6 +43,15 @@ export const signOutUser = createAsyncThunk(SIGN_OUT, async () => {
   }
 });
 
+// User Authentication Action
+export const getAuthUser = createAsyncThunk(AUTH_USER, async () => {
+  try {
+    return await api.getAuthUser();
+  } catch (error) {
+    return error.message;
+  }
+});
+
 // User Reducer
 const userSlice = createSlice({
   name: 'user',
@@ -53,12 +63,15 @@ const userSlice = createSlice({
       .addCase(registerUser.pending, (state) => ({
         ...state,
         status: 'loading',
+        message: '',
+        error: null,
       }
       ))
       .addCase(registerUser.fulfilled, (state, action) => ({
         ...state,
+        status: action.payload.status,
         message: action.payload.message,
-        status: 'successful',
+        error: action.payload.error,
       }))
       .addCase(registerUser.rejected, (state, action) => ({
         ...state,
@@ -69,6 +82,7 @@ const userSlice = createSlice({
       .addCase(signInUser.pending, (state) => ({
         ...state,
         status: 'loading',
+        message: '',
       }))
       .addCase(signInUser.fulfilled, (state, action) => ({
         ...state,
@@ -86,6 +100,7 @@ const userSlice = createSlice({
       // User Sign_out
       .addCase(signOutUser.pending, (state) => ({
         ...state,
+        message: '',
         status: 'loading',
       }))
       .addCase(signOutUser.fulfilled, (state, action) => ({
@@ -99,12 +114,32 @@ const userSlice = createSlice({
         ...state,
         status: 'failed',
         error: action.error.message,
+      }))
+      // Getting Authenticated User
+      .addCase(getAuthUser.pending, (state) => ({
+        ...state,
+        status: 'loading',
+        message: '',
+      }))
+      .addCase(getAuthUser.fulfilled, (state, action) => ({
+        ...state,
+        currentUser: action.payload.currentUser,
+        status: action.payload.status,
+        login: action.payload.login,
+        message: action.payload.message,
+        error: action.payload.error,
+      }))
+      .addCase(getAuthUser.rejected, (state, action) => ({
+        ...state,
+        status: 'failed',
+        error: action.error.message,
       }));
   },
 });
 
 export const currentUser = (state) => (state.user.currentUser);
-export const status = (state) => (state.user.status);
+export const userStatus = (state) => (state.user.status);
+export const userMessage = (state) => (state.user.message);
 export const sessionStatus = (state) => (state.user.login);
 
 export default userSlice.reducer;

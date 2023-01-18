@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/api';
+import { currentUser } from '../user/userSlice';
 
 // Initial State
 const initialState = {
@@ -18,7 +19,8 @@ const ADD_CAR = 'ADD_CAR';
 // Get All Cars Action
 export const getAllCars = createAsyncThunk(GET_ALL_CARS, async () => {
   try {
-    return await api.getAllCars();
+    const userId = currentUser.id;
+    return await api.getAllCars(userId);
   } catch (error) {
     return error.message;
   }
@@ -27,7 +29,8 @@ export const getAllCars = createAsyncThunk(GET_ALL_CARS, async () => {
 // Get Specific Car Action
 export const getCar = createAsyncThunk(GET_CAR, async (carId) => {
   try {
-    return await api.getCar(carId);
+    const userId = currentUser.id;
+    return await api.getCar(userId, carId);
   } catch (error) {
     return error.message;
   }
@@ -36,7 +39,8 @@ export const getCar = createAsyncThunk(GET_CAR, async (carId) => {
 // Car Addition Action
 export const addCar = createAsyncThunk(ADD_CAR, async (car) => {
   try {
-    return await api.addCar(car);
+    const userId = currentUser.id;
+    return await api.addCar(userId, car);
   } catch (error) {
     return error.message;
   }
