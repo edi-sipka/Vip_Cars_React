@@ -1,51 +1,65 @@
-/* eslint-disable */
 import React from 'react';
-import '../App.css';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { signOutUser } from '../redux/user/userSlice';
 import NavFooter from './NavFooter';
+import '../App.css';
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const NavbarData = [
     {
-      name: 'MODELS',
-      link: '/models',
+      name: 'CARS',
+      link: '/',
     },
     {
-      name: 'LIFESTYLE',
-      link: '/lifestyle',
+      name: 'ADD CAR',
+      link: '/add_car',
     },
     {
-      name: 'STYLE',
-      link: '/style',
+      name: 'MY RESERVATIONS',
+      link: '/reservations',
     },
     {
-      name: 'TEST DRIVE',
-      link: '/testdrive',
+      name: 'RESERVE',
+      link: '/reserve',
     },
   ];
+
+  const logout = () => {
+    dispatch(signOutUser());
+    navigate('/login');
+  };
+
   return (
-    <div className="Navbar">
+    <header className="Navbar">
       <img className="logo" src="https://marvel-b1-cdn.bc0a.com/f00000000270502/s19538.pcdn.co/wp-content/uploads/2017/08/TESLA-Logo.jpg" alt="" />
       <div>
-        <ul className='navbar-ul'>
-          {NavbarData.map((val, key) => (
-            <li className="navbar-li"
-              key={key}
-              id = {window.location.pathname == val.link ? "active" : ""}
-              onClick={() => {
-                window.location.pathname = val.link;
-              }}
+        <ul className="navbar-ul">
+          {NavbarData.map((val) => (
+            <li
+              key={val.link}
             >
-              <div>{val.name}</div>
+              <a
+                className="navbar-li"
+                id={window.location.pathname === val.link ? 'active' : ''}
+                href={val.link}
+              >
+                {val.name}
+              </a>
             </li>
           ))}
 
         </ul>
       </div>
+      <button onClick={logout} className="sign-out-btn" type="button">Log Out</button>
       <div className="footer">
-        <NavFooter/>
+        <NavFooter />
       </div>
 
-    </div>
+    </header>
   );
 }
 

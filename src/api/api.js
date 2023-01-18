@@ -45,6 +45,7 @@ const api = {
     const data = await response.json();
     if (status === 200) {
       localStorage.setItem('authToken', headers.get('Authorization'));
+      localStorage.setItem('user', JSON.stringify(data.data));
       return {
         currentUser: data.data,
         status: 'successful', // 'loading', 'successful', 'failed'
@@ -69,6 +70,7 @@ const api = {
 
   // User sign-out API
   sign_out: async () => {
+    localStorage.removeItem('user');
     const response = await fetch(`${baseURL}logout`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('authToken') },
@@ -99,7 +101,7 @@ const api = {
 
     return {
       status: 'failed', // 'loading', 'successful', 'failed'
-      login: true, // false if logged out
+      login: false, // false if logged out
       message: 'Logout Failed',
       error: data.message,
     };

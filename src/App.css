@@ -1,13 +1,14 @@
 .App {
   width: 100vw;
-  height: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }
 
 .Navbar {
   background-color: white;
-  height: 100%;
-  width: 15%;
   box-shadow: 0 3px 20px rgb(0 0 0 / 0.6);
+  position: relative;
 }
 
 .logo {
@@ -15,7 +16,8 @@
   margin-top: 3rem;
 }
 
-.navbar-ul {
+.navbar-ul,
+.sign-out-btn {
   margin-top: 3rem;
   font-size: 1.2rem;
   font-weight: bold;
@@ -25,12 +27,21 @@ li {
   list-style: none;
 }
 
-.navbar-li {
+.navbar-li,
+.sign-out-btn {
   padding: 1rem;
   margin-top: 0.2rem;
+  display: block;
+  color: #000;
 }
 
-.navbar-li:hover {
+.sign-out-btn {
+  width: 100%;
+  border: none;
+}
+
+.navbar-li:hover,
+.sign-out-btn:hover {
   background-color: #97bf10;
 }
 
@@ -61,6 +72,11 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.main {
+  padding: 0.5rem 1rem;
+  overflow-y: scroll;
 }
 
 .session {

@@ -74,7 +74,7 @@ const RegistrationPage = () => {
     if (status === 'successful') {
       setTimeout(() => {
         navigate('/login');
-      }, 2500);
+      }, 1500);
     }
   }, [status, navigate]);
 

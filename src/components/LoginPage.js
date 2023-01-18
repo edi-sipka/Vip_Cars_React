@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import {
-  signInUser, sessionStatus, signOutUser,
-  userError,
+  signInUser, sessionStatus, userError,
 } from '../redux/user/userSlice';
 
 const EMAIL_REGEX = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -52,7 +51,7 @@ const LoginPage = () => {
     if (status) {
       setTimeout(() => {
         navigate('/');
-      }, 2500);
+      }, 1500);
     }
   }, [status, navigate]);
 
@@ -90,10 +89,6 @@ const LoginPage = () => {
     return '';
   };
 
-  const logout = () => {
-    dispatch(signOutUser());
-  };
-
   return (
     <>
       { status ? (
@@ -103,7 +98,6 @@ const LoginPage = () => {
               <FontAwesomeIcon icon={faCheck} className="thick" />
             </div>
             <h2 ref={userRef}>Login Successful</h2>
-            <button type="button" onClick={logout}>Log Out</button>
           </section>
         </main>
       ) : (
