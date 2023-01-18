@@ -1,8 +1,11 @@
+/* eslint-disable react/jsx-no-undef */
 import './App.css';
 import { BrowserRouter as Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Details from './components/Details';
 import Login from './components/Login';
+// eslint-disable-next-line import/no-named-as-default
+// eslint-disable-next-line react/jsx-no-undef
 import Reservation from './components/Reservation';
 import Signup from './components/Signup';
 
