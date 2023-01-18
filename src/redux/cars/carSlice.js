@@ -101,9 +101,9 @@ const carSlice = createSlice({
   },
 });
 
-export const allCars = (state) => (state.cars.cars);
-export const requestedCar = (state) => (state.cars.car);
-export const status = (state) => (state.cars.status);
-export const carMessage = (state) => (state.cars.message);
+export const allCars = (state) => (state.carStore.cars);
+export const requestedCar = (state) => (state.carStore.car);
+export const carStatus = (state) => (state.carStore.status);
+export const carMessage = (state) => (state.carStore.message);
 
 export default carSlice.reducer;

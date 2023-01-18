@@ -137,9 +137,9 @@ const userSlice = createSlice({
   },
 });
 
-export const currentUser = (state) => (state.user.currentUser);
-export const userStatus = (state) => (state.user.status);
-export const userMessage = (state) => (state.user.message);
-export const sessionStatus = (state) => (state.user.login);
+export const currentUser = (state) => (state.userStore.currentUser);
+export const userStatus = (state) => (state.userStore.status);
+export const userMessage = (state) => (state.userStore.message);
+export const sessionStatus = (state) => (state.userStore.login);
 
 export default userSlice.reducer;

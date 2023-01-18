@@ -5,10 +5,12 @@ import {
 import logger from 'redux-logger';
 import userReducer from './user/userSlice';
 import carReducer from './cars/carSlice';
+import reservationSlice from './reservations/reservationSlice';
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  cars: carReducer,
+  userStore: userReducer,
+  carStore: carReducer,
+  reservationStore: reservationSlice,
 });
 
 const store = configureStore(
