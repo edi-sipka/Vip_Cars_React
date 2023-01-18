@@ -6,7 +6,6 @@ import Login from './components/Login';
 import Reservation from './components/Reservation';
 import Signup from './components/Signup';
 
-
 function App() {
   return (
     <>

@@ -1,5 +1,9 @@
 const Details = () => {
-    return ( );
+    return ( 
+        <div>
+        <h1>This is the Details page</h1>
+    </div>
+    );
 }
 
-export default Home;
+export default Details;
