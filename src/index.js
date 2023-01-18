@@ -1,9 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+import './index.css';
+import 'font-awesome/css/font-awesome.min.css';
 import App from './App';
-// eslint-disable-next-line import/extensions
 import store from './redux/configureStore';
 
 ReactDOM.render(
@@ -14,3 +14,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
