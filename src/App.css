@@ -71,7 +71,6 @@ a {
   min-height: 100vh;
   padding: 1rem 0.5rem;
   background: linear-gradient(#97bf1099, #fff), url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/new-ghost-white-fr-3-4-1-1598911711.jpg?crop=1xw:1xh;center,top&resize=980:*') no-repeat;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
