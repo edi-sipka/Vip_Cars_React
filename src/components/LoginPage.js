@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useSignIn } from 'react-auth-kit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -12,6 +13,7 @@ const PWD_REGEX = /^[A-z0-9!@#$%-_]{6,24}$/;
 const LoginPage = () => {
   const userRef = useRef();
   const errRef = useRef();
+  const signIn = useSignIn();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,27 +27,23 @@ const LoginPage = () => {
   const [validPwd, setValidPwd] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const status = useSelector(sessionStatus);
   const error = useSelector(userError);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  useEffect(() => { userRef.current.focus(); }, []);
+  useEffect(() => { setValidEmail(EMAIL_REGEX.test(email)); }, [email]);
+  useEffect(() => { setValidPwd(PWD_REGEX.test(password)); }, [password]);
+  useEffect(() => { setErrMsg(''); }, [email, password]);
+  useEffect(() => { setSuccess(status); }, [status]);
 
-  useEffect(() => {
-    const result = EMAIL_REGEX.test(email);
-    setValidEmail(result);
-  }, [email]);
-
-  useEffect(() => {
-    const result = PWD_REGEX.test(password);
-    setValidPwd(result);
-  }, [password]);
-
-  useEffect(() => {
-    setErrMsg('');
-  }, [email, password]);
+  const signInFunc = () => signIn({
+    token: localStorage.getItem('authToken'),
+    expiresIn: 2400,
+    tokenType: 'Bearer',
+    authState: { email },
+  });
 
   useEffect(() => {
     if (status) {
@@ -77,6 +75,7 @@ const LoginPage = () => {
       password,
     };
     dispatch(signInUser(user));
+    signInFunc();
   };
 
   const nameClass = (value, valid) => {
@@ -91,7 +90,7 @@ const LoginPage = () => {
 
   return (
     <>
-      { status ? (
+      { success ? (
         <main className="session">
           <section>
             <div className="success">

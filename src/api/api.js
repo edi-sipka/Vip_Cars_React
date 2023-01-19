@@ -45,7 +45,7 @@ const api = {
     const data = await response.json();
     if (status === 200) {
       localStorage.setItem('authToken', headers.get('Authorization'));
-      localStorage.setItem('user', JSON.stringify(data.data));
+      // localStorage.setItem('user', JSON.stringify(data.data));
       return {
         currentUser: data.data,
         status: 'successful', // 'loading', 'successful', 'failed'
@@ -70,7 +70,6 @@ const api = {
 
   // User sign-out API
   sign_out: async () => {
-    localStorage.removeItem('user');
     const response = await fetch(`${baseURL}logout`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('authToken') },
@@ -140,22 +139,22 @@ const api = {
   },
 
   // Get all car
-  getAllCars: async (userId) => {
-    const response = await fetch(`${baseURL}users/${userId}/cars`);
+  getAllCars: async () => {
+    const response = await fetch(`${baseURL}/cars`);
     const data = await response.json();
     return data;
   },
 
   // Get a specific car
-  getCar: async (userId, carId) => {
-    const response = await fetch(`${baseURL}users/${userId}/cars/${carId}`);
+  getCar: async (carId) => {
+    const response = await fetch(`${baseURL}/cars/${carId}`);
     const data = await response.json();
     return data;
   },
 
   // Add a new car
-  addCar: async (userId, car) => {
-    const response = await fetch(`${baseURL}users/${userId}/cars`, {
+  addCar: async (car) => {
+    const response = await fetch(`${baseURL}/cars`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ car }),

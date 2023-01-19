@@ -7,7 +7,7 @@ import {
   registerUser, userStatus, userError,
 } from '../redux/user/userSlice';
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
+const USER_REGEX = /^[a-zA-Z0-9 ]{2,23}$/;
 const EMAIL_REGEX = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 const PWD_REGEX = /^[A-z0-9!@#$%-_]{6,24}$/;
 
@@ -39,19 +39,10 @@ const RegistrationPage = () => {
   const status = useSelector(userStatus);
   const error = useSelector(userError);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
-
-  useEffect(() => {
-    const result = USER_REGEX.test(name);
-    setValidName(result);
-  }, [name]);
-
-  useEffect(() => {
-    const result = EMAIL_REGEX.test(email);
-    setValidEmail(result);
-  }, [email]);
+  useEffect(() => { userRef.current.focus(); }, []);
+  useEffect(() => { setValidName(USER_REGEX.test(name)); }, [name]);
+  useEffect(() => { setValidEmail(EMAIL_REGEX.test(email)); }, [email]);
+  useEffect(() => { setErrMsg(''); }, [name, email, password, matchPwd]);
 
   useEffect(() => {
     const result = PWD_REGEX.test(password);
@@ -59,10 +50,6 @@ const RegistrationPage = () => {
     const match = password === matchPwd;
     setValidMatch(match);
   }, [password, matchPwd]);
-
-  useEffect(() => {
-    setErrMsg('');
-  }, [name, email, password, matchPwd]);
 
   useEffect(() => {
     if (error && error.length > 0) {

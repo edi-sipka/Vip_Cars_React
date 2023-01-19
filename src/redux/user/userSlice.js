@@ -3,9 +3,9 @@ import api from '../../api/api';
 
 // Initial State
 const initialState = {
-  currentUser: JSON.parse(localStorage.getItem('user')) || {},
+  currentUser: {},
   status: 'idle', // 'loading', 'successful', 'failed'
-  login: !!localStorage.getItem('user'), // true if logged in
+  login: false, // true if logged in
   message: '',
   error: null,
 };

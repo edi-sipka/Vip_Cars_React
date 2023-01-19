@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
 import {
-  Routes, Route, Outlet, Navigate,
+  Routes, Route,
+  // Outlet, Navigate,
 } from 'react-router-dom';
-import { sessionStatus } from './redux/user/userSlice';
+import { RequireAuth } from 'react-auth-kit';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import Home from './components/Home';
@@ -12,16 +12,12 @@ import './App.css';
 import AddCar from './components/AddCar';
 
 function App() {
-  const login = useSelector(sessionStatus);
-
   return (
     <Routes>
-      <Route element={login ? <Outlet /> : <Navigate to="/login" />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/details" element={<Details />} />
-        <Route path="/reservations" element={<Reservation />} />
-        <Route path="/add_car" element={<AddCar />} />
-      </Route>
+      <Route path="/" element={<RequireAuth loginPath="/login"><Home /></RequireAuth>} />
+      <Route path="/details" element={<RequireAuth loginPath="/login"><Details /></RequireAuth>} />
+      <Route path="/reservations" element={<RequireAuth loginPath="/login"><Reservation /></RequireAuth>} />
+      <Route path="/add_car" element={<RequireAuth loginPath="/login"><AddCar /></RequireAuth>} />
 
       <Route path="/login" element={<LoginPage />} />
       <Route path="/sign_up" element={<RegisterPage />} />

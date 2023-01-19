@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useSignOut } from 'react-auth-kit';
 import { signOutUser } from '../redux/user/userSlice';
 import NavFooter from './NavFooter';
 import '../App.css';
@@ -8,6 +9,7 @@ import '../App.css';
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const signOut = useSignOut();
 
   const NavbarData = [
     {
@@ -29,6 +31,7 @@ function Navbar() {
   ];
 
   const logout = () => {
+    signOut();
     dispatch(signOutUser());
     navigate('/login');
   };
