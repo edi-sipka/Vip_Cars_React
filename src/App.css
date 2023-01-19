@@ -1,13 +1,14 @@
 .App {
   width: 100vw;
-  height: 100vw;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
 }
 
 .Navbar {
   background-color: white;
-  height: 100%;
-  width: 15%;
   box-shadow: 0 3px 20px rgb(0 0 0 / 0.6);
+  position: relative;
 }
 
 .logo {
@@ -15,7 +16,8 @@
   margin-top: 3rem;
 }
 
-.navbar-ul {
+.navbar-ul,
+.sign-out-btn {
   margin-top: 3rem;
   font-size: 1.2rem;
   font-weight: bold;
@@ -25,12 +27,21 @@ li {
   list-style: none;
 }
 
-.navbar-li {
+.navbar-li,
+.sign-out-btn {
   padding: 1rem;
   margin-top: 0.2rem;
+  display: block;
+  color: #000;
 }
 
-.navbar-li:hover {
+.sign-out-btn {
+  width: 100%;
+  border: none;
+}
+
+.navbar-li:hover,
+.sign-out-btn:hover {
   background-color: #97bf10;
 }
 
@@ -61,4 +72,164 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.main {
+  padding: 0.5rem 1rem;
+  overflow-y: scroll;
+}
+
+.session {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+  background: linear-gradient(#97bf1099, #fff), url('https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/new-ghost-white-fr-3-4-1-1598911711.jpg?crop=1xw:1xh;center,top&resize=980:*') no-repeat;
+  background-size: cover;
+}
+
+.session section {
+  width: 80%;
+  max-width: 420px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  background-color: #97bf10;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgb(250 250 250 / 1);
+  color: #fff;
+}
+
+.session form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+.session a,
+.session a:visited {
+  color: #fff;
+}
+
+.session input[type="text"],
+.session input[type="email"],
+.session input[type="password"],
+.session button,
+.session textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+.session input[type="text"],
+.session input[type="email"],
+.session input[type="password"] {
+  border: none;
+  margin: 0.4rem 0;
+}
+
+.session label,
+.session button {
+  margin-top: 1rem;
+}
+
+.session button {
+  border: 3px solid #fff;
+  background-color: #97bf10;
+  color: #fff;
+  padding: 0.5rem;
+}
+
+.session button:hover {
+  border: 3px solid #97bf10;
+  background-color: #fff;
+  color: #97bf10;
+}
+
+.session .instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #000;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.session .instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.session .offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.session .hide {
+  display: none;
+}
+
+.session .valid {
+  color: #fff;
+  margin-left: 0.25rem;
+}
+
+.session .invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.session .errmsg {
+  background-color: lightpink;
+  border-radius: 5px;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.session .line a {
+  padding: 0.3rem;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+}
+
+.session .line a:hover {
+  border: 2px solid #fff;
+  color: #97bf10;
+  background: #fff;
+  border-radius: 0.5rem;
+}
+
+.session .valid-input {
+  outline-color: #97bf10;
+}
+
+.session .invalid-input {
+  outline-color: red;
+}
+
+.session .success {
+  width: 150px;
+  height: 150px;
+  background: green;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.session .thick {
+  font-size: 4rem;
+  font-weight: bolder;
 }

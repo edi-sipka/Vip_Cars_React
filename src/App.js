@@ -1,30 +1,27 @@
-/* eslint-disable react/jsx-no-undef */
-import './App.css';
-import { BrowserRouter as Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import {
+  Routes, Route,
+  // Outlet, Navigate,
+} from 'react-router-dom';
+import { RequireAuth } from 'react-auth-kit';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
 import Home from './components/Home';
 import Details from './components/Details';
-import Login from './components/Login';
-// eslint-disable-next-line import/no-named-as-default
-// eslint-disable-next-line react/jsx-no-undef
 import Reservation from './components/Reservation';
-import Signup from './components/Signup';
+import './App.css';
+import AddCar from './components/AddCar';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <header className="App-header" />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/details" element={<Details />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/reservation" element={<Reservation />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Routes>
+      <Route path="/" element={<RequireAuth loginPath="/login"><Home /></RequireAuth>} />
+      <Route path="/details" element={<RequireAuth loginPath="/login"><Details /></RequireAuth>} />
+      <Route path="/reservations" element={<RequireAuth loginPath="/login"><Reservation /></RequireAuth>} />
+      <Route path="/add_car" element={<RequireAuth loginPath="/login"><AddCar /></RequireAuth>} />
+
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/sign_up" element={<RegisterPage />} />
+    </Routes>
   );
 }
 

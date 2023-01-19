@@ -1,12 +1,12 @@
 import Navbar from './Navbar';
 
-const Details = () => (
+const AddCar = () => (
   <div className="App">
     <Navbar />
     <main className="main">
-      <h1>This is the Details page</h1>
+      <h1>This is the Add Car page</h1>
     </main>
   </div>
 );
 
-export default Details;
+export default AddCar;
