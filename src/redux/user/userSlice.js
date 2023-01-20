@@ -3,7 +3,7 @@ import api from '../../api/api';
 
 // Initial State
 const initialState = {
-  currentUser: {},
+  currentUser: JSON.parse(localStorage.getItem('user')) || {},
   status: 'idle', // 'loading', 'successful', 'failed'
   login: false, // true if logged in
   message: '',
@@ -141,6 +141,7 @@ const userSlice = createSlice({
 });
 
 export const currentUser = (state) => (state.userStore.currentUser);
+export const currentUserRole = (state) => (state.userStore.currentUser.role);
 export const userStatus = (state) => (state.userStore.status);
 export const userMessage = (state) => (state.userStore.message);
 export const userError = (state) => (state.userStore.error);
