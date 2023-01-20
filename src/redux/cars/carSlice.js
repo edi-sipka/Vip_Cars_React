@@ -86,8 +86,10 @@ const carSlice = createSlice({
       }))
       .addCase(addCar.fulfilled, (state, action) => ({
         ...state,
+        car: action.payload.car,
+        status: action.payload.status,
         message: action.payload.message,
-        status: 'successful',
+        error: action.payload.error,
       }))
       .addCase(addCar.rejected, (state, action) => ({
         ...state,
@@ -101,5 +103,6 @@ export const allCars = (state) => (state.carStore.cars);
 export const requestedCar = (state) => (state.carStore.car);
 export const carStatus = (state) => (state.carStore.status);
 export const carMessage = (state) => (state.carStore.message);
+export const carError = (state) => (state.carStore.error);
 
 export default carSlice.reducer;
