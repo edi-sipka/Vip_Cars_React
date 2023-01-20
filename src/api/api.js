@@ -207,7 +207,10 @@ const api = {
 
   // Get a specific reservation
   getReservation: async (userId, resId) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`);
+    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`,
+      {
+        headers: { Authorization: localStorage.getItem('authToken') },
+      });
     const data = await response.json();
     return data;
   },
@@ -216,7 +219,7 @@ const api = {
   addReservation: async (userId, reservation) => {
     const response = await fetch(`${baseURL}users/${userId}/reservations`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: localStorage.getItem('authToken') },
       body: JSON.stringify({ reservation }),
     });
     const data = await response.json();
