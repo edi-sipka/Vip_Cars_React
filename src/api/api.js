@@ -45,7 +45,7 @@ const api = {
     const data = await response.json();
     if (status === 200) {
       localStorage.setItem('authToken', headers.get('Authorization'));
-      // localStorage.setItem('user', JSON.stringify(data.data));
+      localStorage.setItem('user', JSON.stringify(data.data));
       return {
         currentUser: data.data,
         status: 'successful', // 'loading', 'successful', 'failed'
@@ -79,6 +79,7 @@ const api = {
 
     if (status === 200) {
       localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
       return {
         currentUser: {},
         status: 'idle', // 'loading', 'successful', 'failed'
@@ -108,7 +109,7 @@ const api = {
 
   // Get Authenticated User
   getAuthUser: async () => {
-    const response = await fetch(`${baseURL}/users`, {
+    const response = await fetch(`${baseURL}users`, {
       headers: { Authorization: localStorage.getItem('authToken') },
     });
 
@@ -140,27 +141,61 @@ const api = {
 
   // Get all car
   getAllCars: async () => {
-    const response = await fetch(`${baseURL}/cars`);
+    const response = await fetch(`${baseURL}cars`);
     const data = await response.json();
     return data;
   },
 
   // Get a specific car
   getCar: async (carId) => {
-    const response = await fetch(`${baseURL}/cars/${carId}`);
+    const response = await fetch(`${baseURL}cars/${carId}`);
     const data = await response.json();
     return data;
   },
 
   // Add a new car
   addCar: async (car) => {
-    const response = await fetch(`${baseURL}/cars`, {
+    const response = await fetch(`${baseURL}cars`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: localStorage.getItem('authToken') },
       body: JSON.stringify({ car }),
     });
-    const data = await response.json();
-    return data;
+
+    const { status } = response;
+
+    if (status === 200) {
+      const data = await response.json();
+      return {
+        car: data.car,
+        status: 'successful', // 'loading', 'successful', 'failed'
+        message: '',
+        error: null,
+      };
+    }
+    if (status === 400) {
+      const data = await response.json();
+      return {
+        car: {},
+        status: 'failed', // 'loading', 'successful', 'failed'
+        message: data.error,
+        error: data.error,
+      };
+    }
+    if (status === 401) {
+      return {
+        car: {},
+        status: 'failed', // 'loading', 'successful', 'failed'
+        message: response.error,
+        error: 'Only admins can add a car',
+      };
+    }
+
+    return {
+      car: {},
+      status: 'failed', // 'loading', 'successful', 'failed'
+      message: '',
+      error: null,
+    };
   },
 
   // Get all reservations
@@ -172,7 +207,10 @@ const api = {
 
   // Get a specific reservation
   getReservation: async (userId, resId) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`);
+    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`,
+      {
+        headers: { Authorization: localStorage.getItem('authToken') },
+      });
     const data = await response.json();
     return data;
   },
@@ -181,7 +219,7 @@ const api = {
   addReservation: async (userId, reservation) => {
     const response = await fetch(`${baseURL}users/${userId}/reservations`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: localStorage.getItem('authToken') },
       body: JSON.stringify({ reservation }),
     });
     const data = await response.json();
