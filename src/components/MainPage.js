@@ -12,31 +12,29 @@ import Navbar from './Navbar';
 
 import {
   getAllCars,
-  getCarsStatus,
-  // getCarsError,
-  fetchCars,
-  getCarDetails,
-} from '../redux/carSlice';
+  carStatus,
+  addCar,
+  allCars,
+} from '../redux/cars/carSlice';
 
 function MainPage() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const cars = useSelector(getAllCars);
-  const status = useSelector(getCarsStatus);
-  // const error = useSelector(getCarsError);
+  const status = useSelector(carStatus);
   const showDetailsPage = (id) => {
-    dispatch(getCarDetails(id));
+    dispatch(allCars(id));
     navigate(`/cars/${id}`);
   };
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchCars());
+      dispatch(addCar());
     }
   }, [status, dispatch]);
 
   // const showDetailsPage = (id) => {
-  //   dispatch(getCarDetails(id));
+  //   dispatch(allCars(id));
   //   navigate(`/cars/${id}`);
   // };
 
