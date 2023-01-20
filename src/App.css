@@ -120,17 +120,24 @@ a {
 
 .session input[type="text"],
 .session input[type="email"],
+.session input[type="number"],
 .session input[type="password"],
 .session button,
 .session textarea {
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
-  padding: 0.25rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
+  color: #000d;
+}
+
+.session textarea {
+  width: 100%;
 }
 
 .session input[type="text"],
 .session input[type="email"],
+.session input[type="number"],
 .session input[type="password"] {
   border: none;
   margin: 0.4rem 0;
@@ -146,12 +153,21 @@ a {
   background-color: #97bf10;
   color: #fff;
   padding: 0.5rem;
+  margin: 1rem auto;
+  width: 50%;
 }
 
 .session button:hover {
   border: 3px solid #97bf10;
   background-color: #fff;
   color: #97bf10;
+}
+
+.session button:disabled,
+.session button[disabled] {
+  border: 3px solid #fff6;
+  background-color: #97bf1066;
+  color: #fff6;
 }
 
 .session .instructions {
@@ -232,4 +248,16 @@ a {
 .session .thick {
   font-size: 4rem;
   font-weight: bolder;
+}
+
+.session .not-allowed {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.session .caution {
+  font-size: 10rem;
 }
