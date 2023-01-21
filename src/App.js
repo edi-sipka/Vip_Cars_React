@@ -8,7 +8,7 @@ import RegisterPage from './components/RegisterPage';
 import Home from './components/Home';
 import Details from './components/Details';
 import Reservation from './components/Reservation';
-import MainPage from './components/MainPage'
+import MainPage from './components/MainPage';
 import './App.css';
 import AddCar from './components/AddCar';
 

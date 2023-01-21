@@ -23,9 +23,9 @@ function MainPage() {
   const dispatch = useDispatch();
   const cars = useSelector(getAllCars);
   const status = useSelector(carStatus);
-  const showDetailsPage = (id) => {
-    dispatch(allCars(id));
-    navigate(`/cars/${id}`);
+  const showDetailsPage = (carId) => {
+    dispatch(allCars(carId));
+    navigate(`/cars/${carId}`);
   };
   useEffect(() => {
     if (status === 'idle') {
@@ -49,8 +49,8 @@ function MainPage() {
   } else if (status === 'succeeded') {
     content = cars.map((car) => (
       // eslint-disable-next-line react/jsx-key
-      <div key={car.id} className="card">
-        <button type="button" onClick={() => showDetailsPage(car.id)}>
+      <div key={car.carId} className="card">
+        <button type="button" onClick={() => showDetailsPage(car.carId)}>
           <div className="car-background">
             <div className="card-top">
               <img
