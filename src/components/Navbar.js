@@ -21,6 +21,10 @@ function Navbar() {
       link: '/add_car',
     },
     {
+      name: 'DELETE CAR',
+      link: '/delete_car',
+    },
+    {
       name: 'MY RESERVATIONS',
       link: '/reservations',
     },
