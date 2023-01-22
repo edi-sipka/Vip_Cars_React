@@ -23,7 +23,7 @@ const DeleteCar = () => {
   const dispatch = useDispatch();
   const swiperRef = useRef();
 
-  useEffect(() => { dispatch(getAllCars()); });
+  useEffect(() => { dispatch(getAllCars()); }, [dispatch]);
 
   const handleDeletion = (carId) => dispatch(deleteCar(carId));
 
