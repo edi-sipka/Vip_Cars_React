@@ -14,6 +14,7 @@ const initialState = {
 const GET_ALL_CARS = 'GET_ALL_CARS';
 const GET_CAR = 'GET_CAR';
 const ADD_CAR = 'ADD_CAR';
+const DELETE_CAR = 'DELETE_CAR';
 
 // Get All Cars Action
 export const getAllCars = createAsyncThunk(GET_ALL_CARS, async () => {
@@ -37,6 +38,15 @@ export const getCar = createAsyncThunk(GET_CAR, async (carId) => {
 export const addCar = createAsyncThunk(ADD_CAR, async (car) => {
   try {
     return await api.addCar(car);
+  } catch (error) {
+    return error.message;
+  }
+});
+
+// Car Removal Action
+export const deleteCar = createAsyncThunk(DELETE_CAR, async (carId) => {
+  try {
+    return await api.deleteCar(carId);
   } catch (error) {
     return error.message;
   }
@@ -92,6 +102,26 @@ const carSlice = createSlice({
         error: action.payload.error,
       }))
       .addCase(addCar.rejected, (state, action) => ({
+        ...state,
+        status: 'failed',
+        error: action.error.message,
+      }))
+      // Remove car
+      .addCase(deleteCar.pending, (state) => ({
+        ...state,
+        status: 'loading',
+      }))
+      .addCase(deleteCar.fulfilled, (state, action) => ({
+        ...state,
+        cars: [
+          ...state.cars.filter(
+            (car) => car.id !== action.payload.id,
+          ),
+        ],
+        message: action.payload.msg,
+        status: 'successful',
+      }))
+      .addCase(deleteCar.rejected, (state, action) => ({
         ...state,
         status: 'failed',
         error: action.error.message,
