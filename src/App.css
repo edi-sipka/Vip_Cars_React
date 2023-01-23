@@ -124,6 +124,8 @@ a {
 
 .session input[type="text"],
 .session input[type="email"],
+.session select,
+.session input[type="date"],
 .session input[type="number"],
 .session input[type="password"],
 .session button,
@@ -141,6 +143,8 @@ a {
 
 .session input[type="text"],
 .session input[type="email"],
+.session select,
+.session input[type="date"],
 .session input[type="number"],
 .session input[type="password"] {
   border: none;
@@ -268,7 +272,8 @@ a {
   font-size: 10rem;
 }
 
-.del-car-page {
+.del-car-page,
+.main-page {
   display: flex;
   flex-direction: column;
 }
@@ -322,7 +327,14 @@ a {
 .car {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  color: #000;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.car:hover {
+  border: 2px solid #97bf10;
 }
 
 .car-img {
@@ -383,7 +395,8 @@ a {
   background: #d11a2a;
 }
 
-.del-car-page .btn {
+.del-car-page .btn,
+.main-page .btn {
   position: absolute;
   width: 60px;
   height: var(--button-height);
@@ -391,23 +404,27 @@ a {
   background: #97bf1088;
 }
 
-.del-car-page .btn:hover {
+.del-car-page .btn:hover,
+.main-page .btn:hover {
   background: #97bf10;
 }
 
-.del-car-page .prev {
+.del-car-page .prev,
+.main-page .prev {
   border-radius: 0 30px 30px 0;
   top: 30%;
   left: -70px;
 }
 
-.del-car-page .next {
+.del-car-page .next,
+.main-page .next {
   border-radius: 30px 0 0 30px;
   top: 30%;
   right: -70px;
 }
 
-.del-car-page .prev::before {
+.del-car-page .prev::before,
+.main-page .prev::before {
   content: "";
   width: 34px;
   height: calc(0.69 * var(--button-height));
@@ -418,7 +435,8 @@ a {
   right: 20%;
 }
 
-.del-car-page .prev::after {
+.del-car-page .prev::after,
+.main-page .prev::after {
   content: "";
   position: absolute;
   top: 23%;
@@ -431,7 +449,8 @@ a {
   border-radius: 5px;
 }
 
-.del-car-page .next::before {
+.del-car-page .next::before,
+.main-page .next::before {
   content: "";
   width: 34px;
   height: calc(0.69 * var(--button-height));
@@ -442,7 +461,8 @@ a {
   left: 20%;
 }
 
-.del-car-page .next::after {
+.del-car-page .next::after,
+.main-page .next::after {
   content: "";
   position: absolute;
   top: 23%;

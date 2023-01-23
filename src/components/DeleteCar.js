@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   Navigation,
   Pagination, A11y,
@@ -83,8 +81,8 @@ const DeleteCar = () => {
                     <p className="car-model">{car.model}</p>
                     <hr />
                     <p className="car-desc">
-                      {car.description.slice(0, 40)}
-                      {car.description.length > 40 ? '...' : ''}
+                      {car.description.slice(0, 50)}
+                      {car.description.length > 50 ? '...' : ''}
                     </p>
                   </div>
                   { role === 1 ? (

@@ -61,7 +61,13 @@ export const removeReservation = createAsyncThunk(REMOVE_RESERVATION, async (res
 const reservationSlice = createSlice({
   name: 'car',
   initialState,
-  reducers: {},
+  reducers: {
+    setStatusIdle: (state) => ({
+      ...state,
+      status: 'idle',
+      message: '',
+    }),
+  },
   extraReducers: (builder) => {
     builder
       // Get all cars
@@ -130,6 +136,7 @@ const reservationSlice = createSlice({
   },
 });
 
+export const { setStatusIdle } = reservationSlice.actions;
 export const allReservations = (state) => (state.reservationStore.reservations);
 export const requestedReservation = (state) => (state.reservationStore.reservation);
 export const resStatus = (state) => (state.reservationStore.status);

@@ -5,30 +5,26 @@ import {
   Navigation,
   Pagination, A11y,
 } from 'swiper';
-import { getAllReservations, allReservations } from '../redux/reservations/reservationSlice';
-// import { allCars } from '../redux/cars/carSlice';
+import { allCars, getAllCars } from '../redux/cars/carSlice';
 import Navbar from './Navbar';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const MainPage = () => {
-  const reservations = useSelector(allReservations);
-  // const cars = useSelector(allCars);
-  // console.log(cars);
-  // console.log('Res: ', reservations);
+  const cars = useSelector(allCars);
 
   const dispatch = useDispatch();
   const swiperRef = useRef();
 
-  useEffect(() => { dispatch(getAllReservations()); }, [dispatch]);
+  useEffect(() => { dispatch(getAllCars()); }, [dispatch]);
 
   return (
     <div className="App">
       <Navbar />
       <main className="main main-page">
-        <h1 className="title">MY RESERVATIONS</h1>
-        <p className="sub-title">Please select a Reservation to see details</p>
+        <h1 className="title">LATEST VIP CARS</h1>
+        <p className="sub-title">Please select a Car to Reserve</p>
 
         <section className="cars-container">
           <Swiper
@@ -56,33 +52,24 @@ const MainPage = () => {
             }}
             className="mySwiper"
           >
-            { reservations.map((res) => (
-              <SwiperSlide key={res.id}>
-                <a href={`/cars/${res.id}`} className="car">
-                  {res.id}
+            { cars.map((car) => (
+              <SwiperSlide key={car.id}>
+                <a href={`/cars/${car.id}`} className="car">
                   <div className="car-img-wrap">
-                    {/* { cars.forEach((car) => { */}
-                    {/*  let image; */}
-                    {/*  if (car.id === res.car_id) { */}
-                    {/*    image = <img className="car-img" src={car.image} alt={car.name} /> */}
-                    {/*  } */}
-                    {/*  return ''; */}
-                    {/* })} */}
+                    <img className="car-img" src={car.image} alt={car.name} />
                   </div>
-                  <table>
-                    <tr>
-                      <th>City</th>
-                      <tr>{res.city}</tr>
-                    </tr>
-                    <tr>
-                      <th>Reserved</th>
-                      <tr>{res.reservation_date.slice(0, 10)}</tr>
-                    </tr>
-                    <tr>
-                      <th>Returning</th>
-                      <tr>{res.returning_date.slice(0, 10)}</tr>
-                    </tr>
-                  </table>
+                  <div className="car-details">
+                    <h3 className="car-name">
+                      {car.name.slice(0, 20)}
+                      {car.name.length > 20 ? '...' : ''}
+                    </h3>
+                    <p className="car-model">{car.model}</p>
+                    <hr />
+                    <p className="car-desc">
+                      {car.description.slice(0, 50)}
+                      {car.description.length > 50 ? '...' : ''}
+                    </p>
+                  </div>
                 </a>
               </SwiperSlide>
             ))}
