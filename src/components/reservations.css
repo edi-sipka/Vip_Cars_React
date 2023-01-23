@@ -1,0 +1,94 @@
+.reserve-background {
+  background-image: url(https://tesla-cdn.thron.com/delivery/public/image/tesla/03e533bf-8b1d-463f-9813-9a597aafb280/bvlatuR/std/4096x2560/M3-Homepage-Desktop-LHD);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.reserve-layer {
+  background: linear-gradient(to right, rgba(182, 244, 146, 0.5), rgba(51, 139, 147, 0.5));
+  width: 100%;
+  height: 100%;
+}
+
+.reserve-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-sizing: border-box;
+}
+
+.reserve-title {
+  width: 60%;
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.reserve-text {
+  max-width: 70%;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.reserve-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.reserve-form select {
+  width: 15rem;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: gray;
+  cursor: pointer;
+}
+
+.reserve-date {
+  width: 15rem;
+  height: 60px;
+  margin: 0;
+}
+
+.reserve-btn {
+  width: 10rem;
+  height: 3rem;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  color: #97bf10;
+  cursor: pointer;
+}
+
+.reserve-btn:hover {
+  color: white;
+  background-color: #97bf10;
+  border: 1px solid white;
+}
+
+@media screen and (max-width: 767px) {
+  .reserve-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .reserve-date {
+    width: 15rem;
+    height: 60px;
+  }
+
+  .reserve-btn {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 10px;
+  }
+}

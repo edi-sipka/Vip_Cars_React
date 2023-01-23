@@ -1,0 +1,9 @@
+.cars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.carousel-container {
+  width: 100%;
+}
