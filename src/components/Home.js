@@ -10,9 +10,10 @@ import {
   // getCarsError,
   addCar,
   allCars,
+  carMessage,
 } from '../redux/cars/carSlice';
 
-import Container from './Container';
+// import Container from './Container';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const cars = useSelector(getAllCars);
   const status = useSelector(carStatus);
-  // const error = useSelector(getCarsError);
+  const msg = useSelector(carMessage);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -62,14 +63,14 @@ const Home = () => {
       </div>
     ));
   } else if (status === 'failed') {
-    content = <div>{error}</div>;
+    content = <div>{msg}</div>;
   }
   return (
-    <Container>
-      <div className="main-container">
-        {content}
-      </div>
-    </Container>
+  // <Container>
+    <div className="main-container">
+      {content}
+    </div>
+  // </Container>
   );
 };
 export default Home;

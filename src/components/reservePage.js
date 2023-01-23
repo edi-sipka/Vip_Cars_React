@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { ToastContainer } from "react-toastify";
-import { SpinnerRoundOutlined } from "spinners-react";
-import { API_URL, handleToast } from "../redux/utils";
-import "./reservations.css";
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import { SpinnerRoundOutlined } from 'spinners-react';
+import { API_URL, handleToast } from '../redux/utils';
+import './reservations.css';
 
 import {
-    getAllCars,
-    carStatus,
-    carMessage,
-  } from '../redux/cars/carSlice';
+  getAllCars,
+  carStatus,
+  carMessage,
+} from '../redux/cars/carSlice';
 
 const ReservePage = () => {
   const dispatch = useDispatch();
@@ -17,10 +17,10 @@ const ReservePage = () => {
   const status = useSelector(carStatus);
   const error = useSelector(carMessage);
 
-  const CITIES = ["London", "New York", "Berlin", "Paris"];
+  const CITIES = ['London', 'New York', 'Berlin', 'Paris'];
   const { data } = useSelector((state) => state.user);
-  const [city, setCity] = useState("London");
-  const [car, setCar] = useState("");
+  const [city, setCity] = useState('London');
+  const [car, setCar] = useState('');
   const dateObject = new Date();
   dateObject.setDate(dateObject.getDate());
   const today = dateObject.toISOString().substring(0, 10);
@@ -31,8 +31,8 @@ const ReservePage = () => {
       setCar(cars[0].id);
     }
 
-    if (status === "idle") {
-      dispatch(fetchCars());
+    if (status === 'idle') {
+      dispatch(getAllCars());
     }
   }, [status]);
 
@@ -41,9 +41,9 @@ const ReservePage = () => {
 
     try {
       const res = await fetch(`${API_URL}/reservations`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
           Authorization: data.auth,
         },
         body: JSON.stringify({
@@ -60,8 +60,8 @@ const ReservePage = () => {
 
       if (res.status === 201) {
         handleToast({
-          msg: "Created Reservation Successfully",
-          type: "success",
+          msg: 'Created Reservation Successfully',
+          type: 'success',
         });
       } else {
         handleToast({
@@ -72,23 +72,23 @@ const ReservePage = () => {
               {msg.exception}
             </p>
           ),
-          type: "error",
+          type: 'error',
         });
       }
     } catch (err) {
-      handleToast({ msg: err.message, type: "error" });
+      handleToast({ msg: err.message, type: 'error' });
     }
   };
 
   let content;
-  if (status === "loading") {
+  if (status === 'loading') {
     content = (
       <div className="loader text-white">
         Loading Cars ..
         <SpinnerRoundOutlined color="white" size={100} />
       </div>
     );
-  } else if (status === "succeeded") {
+  } else if (status === 'succeeded') {
     content = (
       <>
         <ToastContainer />
@@ -133,18 +133,18 @@ const ReservePage = () => {
         </form>
       </>
     );
-  } else if (status === "failed") {
+  } else if (status === 'failed') {
     content = <div>{error}</div>;
   }
 
   return (
-    <Container>
-      <div className="reserve-background">
-        <div className="reserve-layer">
-          <div className="reserve-page">{content}</div>
-        </div>
+  // <Container>
+    <div className="reserve-background">
+      <div className="reserve-layer">
+        <div className="reserve-page">{content}</div>
       </div>
-    </Container>
+    </div>
+  // </Container>
   );
 };
 
