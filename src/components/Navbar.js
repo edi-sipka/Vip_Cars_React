@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSignOut } from 'react-auth-kit';
 import { signOutUser } from '../redux/user/userSlice';
 import NavFooter from './NavFooter';
+import Logo from '../assets/vip_cars_logo.png';
 import '../App.css';
 
 function Navbar() {
@@ -19,6 +20,10 @@ function Navbar() {
     {
       name: 'ADD CAR',
       link: '/add_car',
+    },
+    {
+      name: 'DELETE CAR',
+      link: '/delete_car',
     },
     {
       name: 'MY RESERVATIONS',
@@ -38,7 +43,7 @@ function Navbar() {
 
   return (
     <header className="Navbar">
-      <img className="logo" src="https://marvel-b1-cdn.bc0a.com/f00000000270502/s19538.pcdn.co/wp-content/uploads/2017/08/TESLA-Logo.jpg" alt="" />
+      <img className="logo" src={Logo} alt="Vip Cars Logo" />
       <div>
         <ul className="navbar-ul">
           {NavbarData.map((val) => (

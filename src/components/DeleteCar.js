@@ -1,21 +1,23 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   Navigation,
   Pagination, A11y,
 } from 'swiper';
-import { allCars, getAllCars } from '../redux/cars/carSlice';
+import { allCars, getAllCars, deleteCar } from '../redux/cars/carSlice';
+import { currentUserRole } from '../redux/user/userSlice';
 import Navbar from './Navbar';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const MainPage = () => {
+const DeleteCar = () => {
   const cars = useSelector(allCars);
+  const role = useSelector(currentUserRole);
 
   const dispatch = useDispatch();
   const swiperRef = useRef();
@@ -23,10 +25,12 @@ const MainPage = () => {
 
   useEffect(() => { dispatch(getAllCars()); }, [dispatch]);
 
+  const handleDeletion = (carId) => dispatch(deleteCar(carId));
+
   return (
     <div className="App">
       <Navbar />
-      <main className="main main-page">
+      <main className="main del-car-page">
         { cars.length < 1 ? (
           <section className="no-res">
             <FontAwesomeIcon icon={faTriangleExclamation} className="excl" />
@@ -36,12 +40,21 @@ const MainPage = () => {
           </section>
         ) : (
           <>
-            <h1 className="title">LATEST VIP CARS</h1>
-            <p className="sub-title">Please select a Car to Reserve</p>
+            <h1 className="title">DELETE A CAR</h1>
+            <p className="sub-title">Please select a Car to delete</p>
+
+            { role !== 1 ? (
+              <section className="caution-section">
+                <FontAwesomeIcon icon={faTriangleExclamation} className="caution" />
+                <h2>Only Admins Can Delete A Car!</h2>
+              </section>
+            ) : ''}
 
             <section className="cars-container">
               <Swiper
                 modules={[Navigation, Pagination, A11y]}
+                // spaceBetween={20}
+                // slidesPerView={3}
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
                 onBeforeInit={(swiper) => {
@@ -67,7 +80,7 @@ const MainPage = () => {
               >
                 { cars.map((car) => (
                   <SwiperSlide key={car.id}>
-                    <a href={`/cars/${car.id}`} className="car">
+                    <div className="car">
                       <div className="car-img-wrap">
                         <img className="car-img" src={car.image} alt={car.name} />
                       </div>
@@ -83,7 +96,10 @@ const MainPage = () => {
                           {car.description.length > 50 ? '...' : ''}
                         </p>
                       </div>
-                    </a>
+                      { role === 1 ? (
+                        <button className="del-car" type="button" onClick={() => handleDeletion(car.id)}>Delete</button>
+                      ) : ''}
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -97,4 +113,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default DeleteCar;

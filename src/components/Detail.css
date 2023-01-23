@@ -1,0 +1,25 @@
+.details-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  width: 100%;
+  gap: 1rem;
+}
+
+.details-container .car-img {
+  width: 100%;
+}
+
+.res-btn {
+  background: #fff;
+  border: 2px solid #97bf10;
+  color: #97bf10;
+  border-radius: 20px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.res-btn:hover {
+  background: #97bf10;
+  color: #fff;
+}

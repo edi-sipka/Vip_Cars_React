@@ -1,3 +1,7 @@
+:root {
+  --button-height: 40px;
+}
+
 .App {
   width: 100vw;
   min-height: 100vh;
@@ -120,6 +124,8 @@ a {
 
 .session input[type="text"],
 .session input[type="email"],
+.session select,
+.session input[type="date"],
 .session input[type="number"],
 .session input[type="password"],
 .session button,
@@ -137,6 +143,8 @@ a {
 
 .session input[type="text"],
 .session input[type="email"],
+.session select,
+.session input[type="date"],
 .session input[type="number"],
 .session input[type="password"] {
   border: none;
@@ -255,9 +263,272 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #d11a2a10;
+  color: #d11a2a;
   gap: 2rem;
 }
 
 .session .caution {
   font-size: 10rem;
+}
+
+.del-car-page,
+.main-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: bolder;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.sub-title {
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+}
+
+.caution-section {
+  border: 1px solid #d11a2a;
+  border-radius: 10px;
+  background: #d11a2a10;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.3rem;
+  margin: 0 auto;
+}
+
+.caution-section .caution {
+  color: #d11a2a;
+  font-size: 1rem;
+}
+
+.caution-section h2 {
+  color: #d11a2a;
+  font-size: 0.6rem;
+}
+
+.cars-container {
+  width: 80%;
+  position: relative;
+  margin: 0 auto auto auto;
+  padding: 0.5rem 0;
+}
+
+.swiper-button-next {
+  right: 20px;
+  width: 200px;
+}
+
+.car {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3rem;
+  color: #000;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.car:hover {
+  border: 2px solid #97bf10;
+}
+
+.car-img {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.car-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.5rem;
+}
+
+.car-details h3,
+.car-details p {
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
+}
+
+.car-model,
+.car-desc {
+  color: #555;
+  text-align: center;
+  font-size: 12px;
+}
+
+.car-desc {
+  font-size: 12px;
+  display: block;
+  width: 100%;
+}
+
+.car-details hr {
+  border-style: none;
+  border-top-style: dotted;
+  border-color: lightgrey;
+  border-width: 5px;
+  width: 50%;
+}
+
+.del-car {
+  border: 2px solid #d11a2a;
+  border-radius: 3px;
+  color: #d11a2a;
+  background: none;
+  font-weight: bold;
+  margin: 1rem auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.del-car:hover {
+  color: #fff;
+  background: #d11a2a;
+}
+
+.del-car-page .btn,
+.main-page .btn {
+  position: absolute;
+  width: 60px;
+  height: var(--button-height);
+  border: none;
+  background: #97bf1088;
+}
+
+.del-car-page .btn:hover,
+.main-page .btn:hover {
+  background: #97bf10;
+}
+
+.del-car-page .prev,
+.main-page .prev {
+  border-radius: 0 30px 30px 0;
+  top: 30%;
+  left: -70px;
+}
+
+.del-car-page .next,
+.main-page .next {
+  border-radius: 30px 0 0 30px;
+  top: 30%;
+  right: -70px;
+}
+
+.del-car-page .prev::before,
+.main-page .prev::before {
+  content: "";
+  width: 34px;
+  height: calc(0.69 * var(--button-height));
+  border-right: 2px solid #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 14%;
+  right: 20%;
+}
+
+.del-car-page .prev::after,
+.main-page .prev::after {
+  content: "";
+  position: absolute;
+  top: 23%;
+  right: 10%;
+  width: calc(0.5 * var(--button-height));
+  height: calc(0.5 * var(--button-height));
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: rotate(-45deg);
+  border-radius: 5px;
+}
+
+.del-car-page .next::before,
+.main-page .next::before {
+  content: "";
+  width: 34px;
+  height: calc(0.69 * var(--button-height));
+  border-left: 2px solid #fff;
+  border-radius: 5px;
+  position: absolute;
+  top: 14%;
+  left: 20%;
+}
+
+.del-car-page .next::after,
+.main-page .next::after {
+  content: "";
+  position: absolute;
+  top: 23%;
+  left: 10%;
+  width: calc(0.5 * var(--button-height));
+  height: calc(0.5 * var(--button-height));
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: rotate(135deg);
+  border-radius: 5px;
+}
+
+.res {
+  border: 2px solid #97bf10;
+  background: #97bf10;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.res:hover {
+  background: #fff;
+}
+
+.res-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 0.5rem;
+}
+
+.res-container #reserve {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  flex-grow: 1;
+  padding-bottom: 0.5rem;
+}
+
+.res-container #reserve,
+.car-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-res {
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #97bf10;
+  border-radius: 20px;
+}
+
+.no-res .excl {
+  color: #97bf10;
+  font-size: 4rem;
+}
+
+.no-res .link {
+  padding: 0.5rem;
+  border: 2px solid #97bf10;
+  background: #fff;
+  color: #97bf10;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: 0 auto;
 }

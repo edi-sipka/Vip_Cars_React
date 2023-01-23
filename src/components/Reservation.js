@@ -1,90 +1,105 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { SpinnerRoundOutlined } from 'spinners-react';
+import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import {
-  allReservations,
-  resStatus,
-  resMessage,
-  getAllReservations,
-} from '../redux/reservations/reservationSlice';
+  Navigation,
+  Pagination, A11y,
+} from 'swiper';
+import { getAllReservations, allReservations } from '../redux/reservations/reservationSlice';
+import Navbar from './Navbar';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-import { allCars } from '../redux/cars/carSlice';
+const MainPage = () => {
+  const reservations = useSelector(allReservations);
 
-import './myreservation.css';
-
-const MyReservations = () => {
   const dispatch = useDispatch();
+  const swiperRef = useRef();
   const navigate = useNavigate();
-  const reservations = useSelector(getAllReservations);
-  const status = useSelector(resStatus);
-  const msg = useSelector(resMessage);
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(allReservations());
-    }
-  }, [status, dispatch]);
+    dispatch(getAllReservations());
+  }, [dispatch]);
 
-  const showDetailsPage = (resId) => {
-    dispatch(allCars(resId));
-    navigate(`/cars/${resId}`);
-  };
-
-  let content;
-  if (status === 'loading') {
-    content = (
-      <div className="loader">
-        Loading reservations ..
-        <SpinnerRoundOutlined color="black" size={100} />
-      </div>
-    );
-  } else if (status === 'succeeded') {
-    content = reservations.map((reservation, index) => (
-      <tr key={reservation.id}>
-        <td data-label="Reservation ID">{index + 1}</td>
-        <td data-label="Name">{reservation.car.name}</td>
-        <td data-label="City">{reservation.city}</td>
-        <td data-label="Date">{reservation.date}</td>
-        <td data-label="Action">
-          <button
-            onClick={() => showDetailsPage(reservation.car.id)}
-            className="btn btn-primary"
-            style={{
-              width: 100,
-            }}
-            type="button"
-          >
-            View Car
-          </button>
-        </td>
-      </tr>
-    ));
-  } else if (status === 'failed') {
-    content = <div>{msg}</div>;
-  }
   return (
-  // <Container>
-    <div className="details-container">
-      <div className="table-div">
-        <h1 className="delete-title">My Reservations List</h1>
-        <table className="table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>City</th>
-              <th>Date</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          {status === 'succeeded' && <tbody>{content}</tbody>}
-        </table>
-        {status !== 'succeeded' && content}
-      </div>
+    <div className="App">
+      <Navbar />
+      <main className="main main-page">
+        { reservations.length > 0 ? (
+          <>
+            <h1 className="title">MY RESERVATIONS</h1>
+            <p className="sub-title">Please select a Reservation to see details</p>
+            <section className="cars-container">
+              <Swiper
+                modules={[Navigation, Pagination, A11y]}
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onBeforeInit={(swiper) => {
+                  swiperRef.current = swiper;
+                }}
+                breakpoints={{
+                  // when window width is >= 640px
+                  0: {
+                    slidesPerView: 1,
+                  },
+                  // when window width is >= 768px
+                  768: {
+                    spaceBetween: 15,
+                    slidesPerView: 2,
+                  },
+                  // when window width is >= 768px
+                  900: {
+                    spaceBetween: 20,
+                    slidesPerView: 3,
+                  },
+                }}
+                className="mySwiper"
+              >
+                { reservations.map((res) => (
+                  <SwiperSlide key={res.id}>
+                    <div className="car res">
+                      <div className="car-img-wrap">
+                        <img className="car-img" src={res.car.image} alt={res.car.name} />
+                      </div>
+                      <h3>{res.car.name}</h3>
+                      <table>
+                        <tr>
+                          <th>City</th>
+                          <tr>{res.city}</tr>
+                        </tr>
+                        <tr>
+                          <th>Reserved</th>
+                          <tr>{res.reservation_date.slice(0, 10)}</tr>
+                        </tr>
+                        <tr>
+                          <th>Returning</th>
+                          <tr>{res.returning_date.slice(0, 10)}</tr>
+                        </tr>
+                      </table>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <button type="button" aria-label="previous" className="btn prev" onClick={() => swiperRef.current?.slidePrev()} />
+              <button type="button" aria-label="previous" className="btn next" onClick={() => swiperRef.current?.slideNext()} />
+            </section>
+          </>
+        ) : (
+          <section className="no-res">
+            <FontAwesomeIcon icon={faTriangleExclamation} className="excl" />
+            <h2>No reservation has been made yet!</h2>
+            <p>Reserve a car using the button bellow</p>
+            <button className="link" type="button" onClick={() => navigate('/reserve')}>Add Car</button>
+          </section>
+        ) }
+
+      </main>
     </div>
-  // </Container>
   );
 };
-export default MyReservations;
+
+export default MainPage;

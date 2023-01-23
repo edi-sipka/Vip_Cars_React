@@ -4,13 +4,13 @@ import { faCheck, faInfoCircle, faTriangleExclamation } from '@fortawesome/free-
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
-  addCar, requestedCar, carError, carStatus,
+  addCar, requestedCar, carError, carStatus, allCars,
 } from '../redux/cars/carSlice';
 import { currentUserRole } from '../redux/user/userSlice';
 import Navbar from './Navbar';
 
 const INPUT_REGEX = /^[a-zA-Z0-9- ]{2,30}$/;
-const TEXT_REGEX = /^[a-zA-Z0-9- ]{9,100}$/;
+const TEXT_REGEX = /^[a-zA-Z0-9-.!@#$%&*:|;"'/?,>< ]{9,1000}$/;
 const NUM_REGEX = /^\+?(\d*[1-9]\d*(\.\d*[1-9]\d*)?)$/;
 const URL_REGEX = /^(ftp|http|https):\/\/[^ "]+$/;
 const AddCar = () => {
@@ -47,6 +47,7 @@ const AddCar = () => {
   const error = useSelector(carError);
   const createdCar = useSelector(requestedCar);
   const userRole = useSelector(currentUserRole);
+  const cars = useSelector(allCars);
 
   useEffect(() => {
     setErrMsg('');
@@ -66,9 +67,9 @@ const AddCar = () => {
   }, [validName, validModel, validPrice, validImage, validDes]);
 
   useEffect(() => {
-    if (status === 'successful') {
+    if (status === 'successful' && cars.length > 0) {
       setTimeout(() => {
-        // navigate(`/car/${createdCar.id}`);
+        navigate(`/cars/${createdCar.id}`);
       }, 1500);
     }
   }, [status, navigate, createdCar]);
@@ -249,7 +250,7 @@ const AddCar = () => {
             </label>
             <p id="desNote" className={desFocus && description && !validDes ? 'instructions' : 'offscreen'}>
               <FontAwesomeIcon icon={faInfoCircle} />
-              5 or more characters.
+              10 to 1,000 characters.
             </p>
 
             <button type="submit" disabled={!allValid}>

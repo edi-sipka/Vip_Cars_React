@@ -141,14 +141,18 @@ const api = {
 
   // Get all car
   getAllCars: async () => {
-    const response = await fetch(`${baseURL}cars`);
+    const response = await fetch(`${baseURL}cars`, {
+      headers: { Authorization: localStorage.getItem('authToken') },
+    });
     const data = await response.json();
     return data;
   },
 
   // Get a specific car
   getCar: async (carId) => {
-    const response = await fetch(`${baseURL}cars/${carId}`);
+    const response = await fetch(`${baseURL}cars/${carId}`, {
+      headers: { Authorization: localStorage.getItem('authToken') },
+    });
     const data = await response.json();
     return data;
   },
@@ -198,9 +202,22 @@ const api = {
     };
   },
 
+  // Remove a specific car
+  deleteCar: async (carId) => {
+    const response = await fetch(`${baseURL}cars/${carId}`, {
+      method: 'DELETE',
+      headers: { Authorization: localStorage.getItem('authToken') },
+    });
+    const data = await response.json();
+    return data;
+  },
+
   // Get all reservations
   getAllReservation: async (userId) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations`);
+    const response = await fetch(`${baseURL}users/${userId}/reservations`,
+      {
+        headers: { Authorization: localStorage.getItem('authToken') },
+      });
     const data = await response.json();
     return data;
   },
