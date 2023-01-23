@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { getCar, requestedCar } from '../redux/cars/carSlice';
 import { addReservation, setStatusIdle } from '../redux/reservations/reservationSlice';
-import './reservations.css';
 
 const ReservePage = () => {
   const { id } = useParams();
@@ -37,11 +36,6 @@ const ReservePage = () => {
     dispatch(setStatusIdle());
   }, []);
   useEffect(() => { setErrMsg(''); }, [city, resDate, retDate]);
-  // useEffect(() => {
-  //   if (status === 'successful') {
-  //     setSuccess(true);
-  //   }
-  // }, [status]);
 
   useEffect(() => {
     if (retDate.localeCompare(resDate) > 0) {
@@ -78,7 +72,7 @@ const ReservePage = () => {
     dispatch(addReservation(reservation));
     setSuccess(true);
     setTimeout(() => {
-      navigate('/');
+      navigate('/reservations');
       dispatch(setStatusIdle());
     }, 1500);
   };

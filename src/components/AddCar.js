@@ -4,7 +4,7 @@ import { faCheck, faInfoCircle, faTriangleExclamation } from '@fortawesome/free-
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
-  addCar, requestedCar, carError, carStatus,
+  addCar, requestedCar, carError, carStatus, allCars,
 } from '../redux/cars/carSlice';
 import { currentUserRole } from '../redux/user/userSlice';
 import Navbar from './Navbar';
@@ -47,6 +47,7 @@ const AddCar = () => {
   const error = useSelector(carError);
   const createdCar = useSelector(requestedCar);
   const userRole = useSelector(currentUserRole);
+  const cars = useSelector(allCars);
 
   useEffect(() => {
     setErrMsg('');
@@ -66,9 +67,9 @@ const AddCar = () => {
   }, [validName, validModel, validPrice, validImage, validDes]);
 
   useEffect(() => {
-    if (status === 'successful') {
+    if (status === 'successful' && cars.length > 0) {
       setTimeout(() => {
-        // navigate(`/cars/${createdCar.id}`);
+        navigate(`/cars/${createdCar.id}`);
       }, 1500);
     }
   }, [status, navigate, createdCar]);

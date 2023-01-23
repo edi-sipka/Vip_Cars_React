@@ -28,9 +28,8 @@ export const getAllReservations = createAsyncThunk(GET_RESERVATIONS, async () =>
 });
 
 // Get Reservation Action
-export const getReservation = createAsyncThunk(GET_RESERVATION, async (resId) => {
+export const getReservation = createAsyncThunk(GET_RESERVATION, async ({ userId, resId }) => {
   try {
-    const userId = currentUser.id;
     return await api.getReservation(userId, resId);
   } catch (error) {
     return error.message;
