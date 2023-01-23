@@ -12,7 +12,6 @@ import {
 
 import { allCars } from "../redux/cars/carSlice";
 
-import Container from "./Container";
 import "./myreservation.css";
 
 const MyReservations = () => {
