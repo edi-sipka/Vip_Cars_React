@@ -4,19 +4,15 @@ import { useEffect } from 'react';
 import { getCar, requestedCar } from '../redux/cars/carSlice';
 import Navbar from './Navbar';
 import './Detail.css';
-
 const Details = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const car = useSelector(requestedCar);
-
-  useEffect(() => { dispatch(getCar(id)); }, [dispatch, id]);
-
+  useEffect(() => { dispatch(getCar(id)); }, [dispatch]);
   const handleReservation = (carId) => {
     navigate(`/reserve/${carId}`);
   };
-
   return (
     <div className="App">
       <Navbar />
@@ -29,13 +25,23 @@ const Details = () => {
           <div className="details-info">
             <h2 className="title">{car.name}</h2>
             <table className="recipe-food-table">
-              <tr>
+              <tr className="dark-bg">
                 <th>Model</th>
                 <td>{car.model}</td>
               </tr>
               <tr>
-                <th>Price</th>
-                <td>{car.price}</td>
+                <th>Finance fee</th>
+                <td>
+                  £
+                  {parseInt(car.price, 10)}
+                </td>
+              </tr>
+              <tr className="dark-bg">
+                <th>Purchase fee</th>
+                <td>
+                  £
+                  {parseInt(car.price, 10) + 50}
+                </td>
               </tr>
               <tr>
                 <th>Description</th>
@@ -49,5 +55,4 @@ const Details = () => {
     </div>
   );
 };
-
 export default Details;
