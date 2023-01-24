@@ -10,13 +10,10 @@ const Details = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const car = useSelector(requestedCar);
-
   useEffect(() => { dispatch(getCar(id)); }, [dispatch]);
-
   const handleReservation = (carId) => {
     navigate(`/reserve/${carId}`);
   };
-
   return (
     <div className="App">
       <Navbar />
@@ -29,13 +26,23 @@ const Details = () => {
           <div className="details-info">
             <h2 className="title">{car.name}</h2>
             <table className="recipe-food-table">
-              <tr>
+              <tr className="dark-bg">
                 <th>Model</th>
                 <td>{car.model}</td>
               </tr>
               <tr>
-                <th>Price</th>
-                <td>{car.price}</td>
+                <th>Finance fee</th>
+                <td>
+                  £
+                  {parseInt(car.price, 10)}
+                </td>
+              </tr>
+              <tr className="dark-bg">
+                <th>Purchase fee</th>
+                <td>
+                  £
+                  {parseInt(car.price, 10) + 50}
+                </td>
               </tr>
               <tr>
                 <th>Description</th>
@@ -45,9 +52,13 @@ const Details = () => {
             <button type="button" className="res-btn" onClick={() => handleReservation(car.id)}>Reserve Car</button>
           </div>
         </div>
+        <a href="/" className="back-btn">
+          {' '}
+          {'<'}
+          {' '}
+        </a>
       </main>
     </div>
   );
 };
-
 export default Details;
