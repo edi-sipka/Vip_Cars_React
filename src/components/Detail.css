@@ -36,3 +36,6 @@
   align-items: center;
   padding: 8px;
 }
+.dark-bg {
+  background-color: rgb(213, 213, 213);
+}
