@@ -27,3 +27,12 @@
 .details-info {
   text-align: right;
 }
+.recipe-food-table {
+  width: 100%;
+}
+.recipe-food-table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
