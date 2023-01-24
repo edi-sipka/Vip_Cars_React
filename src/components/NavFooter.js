@@ -68,14 +68,6 @@ function NavFooter() {
             </a>
           </section>
         </div>
-
-        <div className="text-center text-dark pb-3">
-          © 2023
-          <br />
-          Copyright:
-          <a className="text-dark" href="https://mdbootstrap.com/">TESLA</a>
-        </div>
-
       </footer>
     </div>
   );
