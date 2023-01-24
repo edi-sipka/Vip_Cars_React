@@ -1,0 +1,520 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component Should render the proper details component 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="App"
+      >
+        <header
+          class="Navbar"
+        >
+          <img
+            alt="Vip Cars Logo"
+            class="logo"
+            src="vip_cars_logo.png"
+          />
+          <div>
+            <ul
+              class="navbar-ul"
+            >
+              <li>
+                <a
+                  class="navbar-li"
+                  href="/"
+                  id="active"
+                >
+                  CARS
+                </a>
+              </li>
+              <li>
+                <a
+                  class="navbar-li"
+                  href="/add_car"
+                  id=""
+                >
+                  ADD CAR
+                </a>
+              </li>
+              <li>
+                <a
+                  class="navbar-li"
+                  href="/delete_car"
+                  id=""
+                >
+                  DELETE CAR
+                </a>
+              </li>
+              <li>
+                <a
+                  class="navbar-li"
+                  href="/reservations"
+                  id=""
+                >
+                  MY RESERVATIONS
+                </a>
+              </li>
+              <li>
+                <a
+                  class="navbar-li"
+                  href="/reserve"
+                  id=""
+                >
+                  RESERVE
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button
+            class="sign-out-btn"
+            type="button"
+          >
+            Log Out
+          </button>
+          <div
+            class="footer"
+          >
+            <div
+              class="NavFooter"
+            >
+              <footer
+                class="text-center text-white"
+              >
+                <div
+                  class="container pt-4"
+                >
+                  <section
+                    class="mb-4"
+                  >
+                    <a
+                      class="btn btn-link btn-floating btn-lg text-dark"
+                      data-mdb-ripple-color="dark"
+                      href="#!"
+                      role="button"
+                    >
+                      <i
+                        class="fa fa-twitter"
+                      />
+                    </a>
+                    <a
+                      class="btn btn-link btn-floating btn-lg text-dark"
+                      data-mdb-ripple-color="dark"
+                      href="#!"
+                      role="button"
+                    >
+                      <i
+                        class="fa fa-facebook-f"
+                      />
+                    </a>
+                    <a
+                      class="btn btn-link btn-floating btn-lg text-dark"
+                      data-mdb-ripple-color="dark"
+                      href="#!"
+                      role="button"
+                    >
+                      <i
+                        class="fa fa-google-plus"
+                      />
+                    </a>
+                    <a
+                      class="btn btn-link btn-floating btn-lg text-dark"
+                      data-mdb-ripple-color="dark"
+                      href="#!"
+                      role="button"
+                    >
+                      <i
+                        class="fa fa-vimeo"
+                      />
+                    </a>
+                    <a
+                      class="btn btn-link btn-floating btn-lg text-dark"
+                      data-mdb-ripple-color="dark"
+                      href="#!"
+                      role="button"
+                    >
+                      <i
+                        class="fa fa-pinterest"
+                      />
+                    </a>
+                    <a
+                      class="btn btn-link btn-floating btn-lg text-dark"
+                      data-mdb-ripple-color="dark"
+                      href="#!"
+                      role="button"
+                    >
+                      <i
+                        class="fa fa-github"
+                      />
+                    </a>
+                  </section>
+                </div>
+              </footer>
+            </div>
+          </div>
+        </header>
+        <main
+          class="main"
+        >
+          <h1>
+            This is the Details page
+          </h1>
+          <div
+            class="details-container"
+          >
+            <div
+              class="image-wrapper"
+            >
+              <img
+                class="car-img"
+              />
+            </div>
+            <div
+              class="details-info"
+            >
+              <h2
+                class="title"
+              />
+              <table
+                class="recipe-food-table"
+              >
+                <tr
+                  class="dark-bg"
+                >
+                  <th>
+                    Model
+                  </th>
+                  <td />
+                </tr>
+                <tr>
+                  <th>
+                    Finance fee
+                  </th>
+                  <td>
+                    £
+                    NaN
+                  </td>
+                </tr>
+                <tr
+                  class="dark-bg"
+                >
+                  <th>
+                    Purchase fee
+                  </th>
+                  <td>
+                    £
+                    NaN
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    Description
+                  </th>
+                  <td />
+                </tr>
+              </table>
+              <button
+                class="res-btn"
+                type="button"
+              >
+                Reserve Car
+              </button>
+            </div>
+          </div>
+          <a
+            class="back-btn"
+            href="/"
+          >
+             
+            &lt;
+             
+          </a>
+        </main>
+      </div>
+      ,
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="App"
+    >
+      <header
+        class="Navbar"
+      >
+        <img
+          alt="Vip Cars Logo"
+          class="logo"
+          src="vip_cars_logo.png"
+        />
+        <div>
+          <ul
+            class="navbar-ul"
+          >
+            <li>
+              <a
+                class="navbar-li"
+                href="/"
+                id="active"
+              >
+                CARS
+              </a>
+            </li>
+            <li>
+              <a
+                class="navbar-li"
+                href="/add_car"
+                id=""
+              >
+                ADD CAR
+              </a>
+            </li>
+            <li>
+              <a
+                class="navbar-li"
+                href="/delete_car"
+                id=""
+              >
+                DELETE CAR
+              </a>
+            </li>
+            <li>
+              <a
+                class="navbar-li"
+                href="/reservations"
+                id=""
+              >
+                MY RESERVATIONS
+              </a>
+            </li>
+            <li>
+              <a
+                class="navbar-li"
+                href="/reserve"
+                id=""
+              >
+                RESERVE
+              </a>
+            </li>
+          </ul>
+        </div>
+        <button
+          class="sign-out-btn"
+          type="button"
+        >
+          Log Out
+        </button>
+        <div
+          class="footer"
+        >
+          <div
+            class="NavFooter"
+          >
+            <footer
+              class="text-center text-white"
+            >
+              <div
+                class="container pt-4"
+              >
+                <section
+                  class="mb-4"
+                >
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark"
+                    data-mdb-ripple-color="dark"
+                    href="#!"
+                    role="button"
+                  >
+                    <i
+                      class="fa fa-twitter"
+                    />
+                  </a>
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark"
+                    data-mdb-ripple-color="dark"
+                    href="#!"
+                    role="button"
+                  >
+                    <i
+                      class="fa fa-facebook-f"
+                    />
+                  </a>
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark"
+                    data-mdb-ripple-color="dark"
+                    href="#!"
+                    role="button"
+                  >
+                    <i
+                      class="fa fa-google-plus"
+                    />
+                  </a>
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark"
+                    data-mdb-ripple-color="dark"
+                    href="#!"
+                    role="button"
+                  >
+                    <i
+                      class="fa fa-vimeo"
+                    />
+                  </a>
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark"
+                    data-mdb-ripple-color="dark"
+                    href="#!"
+                    role="button"
+                  >
+                    <i
+                      class="fa fa-pinterest"
+                    />
+                  </a>
+                  <a
+                    class="btn btn-link btn-floating btn-lg text-dark"
+                    data-mdb-ripple-color="dark"
+                    href="#!"
+                    role="button"
+                  >
+                    <i
+                      class="fa fa-github"
+                    />
+                  </a>
+                </section>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </header>
+      <main
+        class="main"
+      >
+        <h1>
+          This is the Details page
+        </h1>
+        <div
+          class="details-container"
+        >
+          <div
+            class="image-wrapper"
+          >
+            <img
+              class="car-img"
+            />
+          </div>
+          <div
+            class="details-info"
+          >
+            <h2
+              class="title"
+            />
+            <table
+              class="recipe-food-table"
+            >
+              <tr
+                class="dark-bg"
+              >
+                <th>
+                  Model
+                </th>
+                <td />
+              </tr>
+              <tr>
+                <th>
+                  Finance fee
+                </th>
+                <td>
+                  £
+                  NaN
+                </td>
+              </tr>
+              <tr
+                class="dark-bg"
+              >
+                <th>
+                  Purchase fee
+                </th>
+                <td>
+                  £
+                  NaN
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Description
+                </th>
+                <td />
+              </tr>
+            </table>
+            <button
+              class="res-btn"
+              type="button"
+            >
+              Reserve Car
+            </button>
+          </div>
+        </div>
+        <a
+          class="back-btn"
+          href="/"
+        >
+           
+          &lt;
+           
+        </a>
+      </main>
+    </div>
+    ,
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
