@@ -42,6 +42,7 @@ const Details = () => {
                 <td>{car.description}</td>
               </tr>
             </table>
+            <button type="button" className="res-btn" onClick={() => handleReservation(car.id)}>Reserve Car</button>
           </div>
         </div>
       </main>
