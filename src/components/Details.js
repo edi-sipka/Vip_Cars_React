@@ -51,6 +51,11 @@ const Details = () => {
             <button type="button" className="res-btn" onClick={() => handleReservation(car.id)}>Reserve Car</button>
           </div>
         </div>
+        <a href="/" className="back-btn">
+          {' '}
+          {'<'}
+          {' '}
+        </a>
       </main>
     </div>
   );
