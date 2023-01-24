@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faInfoCircle, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { allCars, getAllCars } from '../redux/cars/carSlice';
+import { allCars, carStatus, getAllCars } from '../redux/cars/carSlice';
 import { addReservation, setStatusIdle } from '../redux/reservations/reservationSlice';
 import './Detail.css';
 
@@ -28,6 +28,8 @@ const ReservationDetails = () => {
   const [validDate, setValidDate] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const status = useSelector(carStatus);
 
   useEffect(() => {
     dispatch(getAllCars());
@@ -192,14 +194,23 @@ const ReservationDetails = () => {
 
   return (
     <main className="session">
-      { cars.length < 1 ? (
-        <section>
-          <FontAwesomeIcon icon={faTriangleExclamation} className="thick" />
-          <h2 ref={userRef}>No car has been added yet!</h2>
-          <p>Add a car to make reservations</p>
-          <button type="button" onClick={() => navigate('/add_car')}>Add Car</button>
-        </section>
-      ) : (addRes())}
+      { status === 'loading' ? (
+        <div className="loading-container">
+          <div className="load" />
+          <div id="loading-text">loading</div>
+        </div>
+      ) : (
+        <>
+          { cars.length < 1 ? (
+            <section>
+              <FontAwesomeIcon icon={faTriangleExclamation} className="thick" />
+              <h2 ref={userRef}>No car has been added yet!</h2>
+              <p>Add a car to make reservations</p>
+              <button type="button" onClick={() => navigate('/add_car')}>Add Car</button>
+            </section>
+          ) : (addRes())}
+        </>
+      ) }
     </main>
   );
 };
