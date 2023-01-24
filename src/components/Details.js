@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { getCar, requestedCar } from '../redux/cars/carSlice';
 import Navbar from './Navbar';
 import './Detail.css';
+
 const Details = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
