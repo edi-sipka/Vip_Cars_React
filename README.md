@@ -86,7 +86,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo]()
+- [Live Demo](https://vip-cars-rental.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -218,10 +218,7 @@ I would like to acknowledge:
 
 ## 📝 License <a name="license"></a>
 
-<<<<<<< HEAD
 This project is [MIT](./LICENSE) licensed.
-=======
-This project is [MIT](./MIT.md) licensed.
->>>>>>> dev
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
