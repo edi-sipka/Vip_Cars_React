@@ -1,4 +1,4 @@
-// const baseURL = 'http://127.0.0.1:3000/api/v1/'; // For Local Server
+// const baseURL = 'http://127.0.0.1:3000/api/v1'; // For Local Server
 const baseURL = 'https://vip-cars-api.onrender.com/api/v1'; // For Remote Server
 
 // ALL API CALLS
@@ -116,8 +116,8 @@ const api = {
 
     const { status } = response;
 
-    const data = await response.json();
     if (status === 200) {
+      const data = await response.json();
       return {
         currentUser: data,
         status: 'successful', // 'loading', 'successful', 'failed'
@@ -129,12 +129,13 @@ const api = {
 
     if (status === 401) {
       localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
       return {
         currentUser: {},
         status: 'failed', // 'loading', 'successful', 'failed'
         login: false, // true if logged in
-        message: 'Unauthorised user',
-        error: 'Unauthorised user',
+        message: '',
+        error: null,
       };
     }
     return null;
