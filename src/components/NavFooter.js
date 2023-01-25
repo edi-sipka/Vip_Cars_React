@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function NavFooter() {
+function NavFooter({ isOpen }) {
   return (
-    <div className="NavFooter">
+    <div className={`NavFooter ${isOpen ? 'open' : 'closed'}`}>
       <footer className="text-center text-white">
         {/* Grid container */}
         <div className="container pt-4">
@@ -69,16 +70,13 @@ function NavFooter() {
           </section>
         </div>
 
-        <div className="text-center text-dark pb-3">
-          © 2023
-          <br />
-          Copyright:
-          <a className="text-dark" href="https://mdbootstrap.com/">TESLA</a>
-        </div>
-
       </footer>
     </div>
   );
 }
+
+NavFooter.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+};
 
 export default NavFooter;

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { getCar, requestedCar } from '../redux/cars/carSlice';
 import { addReservation, setStatusIdle } from '../redux/reservations/reservationSlice';
+import Navbar from './Navbar';
 
 const ReservePage = () => {
   const { id } = useParams();
@@ -78,99 +79,104 @@ const ReservePage = () => {
   };
 
   return (
-    <>
-      { success ? (
-        <main className="session">
-          <section>
-            <div className="success">
-              <FontAwesomeIcon icon={faCheck} className="thick" />
+    <div className="App">
+      <Navbar />
+      <main className="main">
+        <>
+          { success ? (
+            <div className="session">
+              <section>
+                <div className="success">
+                  <FontAwesomeIcon icon={faCheck} className="thick" />
+                </div>
+                <h2 ref={userRef}>Reservation Successful</h2>
+              </section>
             </div>
-            <h2 ref={userRef}>Reservation Successful</h2>
-          </section>
-        </main>
-      ) : (
-        <main className="session">
-          <section>
-            <h1>
-              Reserve
-              {' '}
-              {car.name}
-            </h1>
-            <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMsg}</p>
-            <div className="res-container">
-              <div className="car-img-wrapper">
-                <img className="car-img" src={car.image} alt={car.name} />
-              </div>
-              <form id="reserve" onSubmit={handleReservation}>
-
-                {/*  City */}
-                <label htmlFor="cities">
-                  City:
-                  <br />
-                  <select
-                    ref={userRef}
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    name="cities"
-                    id="cities"
-                  >
-                    {CITIES.map((city) => (
-                      <option key={city} value={city}>
-                        {city}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                {/*  Reserve Date */}
-                <label htmlFor="reserveDate">
-                  Reserve Date:
-                  <br />
-                  <input
-                    className="reserve-date"
-                    id="reserveDate"
-                    type="date"
-                    value={resDate}
-                    aria-invalid={validDate ? 'false' : 'true'}
-                    onChange={(e) => setResDate(e.target.value)}
-                  />
-                </label>
-
-                {/*  Return Date */}
-                <label htmlFor="returnDate">
-                  Return Date:
-                  <br />
-                  <input
-                    id="returnDate"
-                    type="date"
-                    value={retDate}
-                    onChange={(e) => setRetDate(e.target.value)}
-                    className={nameClass(validDate)}
-                    required
-                    aria-invalid={validDate ? 'false' : 'true'}
-                    aria-describedby="returnDate"
-                    onFocus={() => setRetDateFocus(true)}
-                    onBlur={() => setRetDateFocus(false)}
-                  />
-                </label>
-                <p id="returnDate" className={retDateFocus && !validDate ? 'instructions' : 'offscreen'}>
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  Return date must be on
-                  <br />
-                  a later date to Reserve date
-                </p>
-
-                <br />
-
-                <button type="submit" disabled={!validDate}>
+          ) : (
+            <div className="session">
+              <section>
+                <h1>
                   Reserve
-                </button>
-              </form>
+                  {' '}
+                  {car.name}
+                </h1>
+                <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMsg}</p>
+                <div className="res-container">
+                  <div className="car-img-wrapper">
+                    <img className="car-img" src={car.image} alt={car.name} />
+                  </div>
+                  <form id="reserve" onSubmit={handleReservation}>
+
+                    {/*  City */}
+                    <label htmlFor="cities">
+                      City:
+                      <br />
+                      <select
+                        ref={userRef}
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        name="cities"
+                        id="cities"
+                      >
+                        {CITIES.map((city) => (
+                          <option key={city} value={city}>
+                            {city}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+
+                    {/*  Reserve Date */}
+                    <label htmlFor="reserveDate">
+                      Reserve Date:
+                      <br />
+                      <input
+                        className="reserve-date"
+                        id="reserveDate"
+                        type="date"
+                        value={resDate}
+                        aria-invalid={validDate ? 'false' : 'true'}
+                        onChange={(e) => setResDate(e.target.value)}
+                      />
+                    </label>
+
+                    {/*  Return Date */}
+                    <label htmlFor="returnDate">
+                      Return Date:
+                      <br />
+                      <input
+                        id="returnDate"
+                        type="date"
+                        value={retDate}
+                        onChange={(e) => setRetDate(e.target.value)}
+                        className={nameClass(validDate)}
+                        required
+                        aria-invalid={validDate ? 'false' : 'true'}
+                        aria-describedby="returnDate"
+                        onFocus={() => setRetDateFocus(true)}
+                        onBlur={() => setRetDateFocus(false)}
+                      />
+                    </label>
+                    <p id="returnDate" className={retDateFocus && !validDate ? 'instructions' : 'offscreen'}>
+                      <FontAwesomeIcon icon={faInfoCircle} />
+                      Return date must be on
+                      <br />
+                      a later date to Reserve date
+                    </p>
+
+                    <br />
+
+                    <button type="submit" disabled={!validDate}>
+                      Reserve
+                    </button>
+                  </form>
+                </div>
+              </section>
             </div>
-          </section>
-        </main>
-      )}
-    </>
+          )}
+        </>
+      </main>
+    </div>
   );
 };
 
