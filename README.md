@@ -218,6 +218,10 @@ I would like to acknowledge:
 
 ## 📝 License <a name="license"></a>
 
+<<<<<<< HEAD
 This project is [MIT](./LICENSE) licensed.
+=======
+This project is [MIT](./MIT.md) licensed.
+>>>>>>> dev
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

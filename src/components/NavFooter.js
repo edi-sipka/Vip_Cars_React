@@ -69,7 +69,10 @@ function NavFooter({ isOpen }) {
             </a>
           </section>
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
       </footer>
     </div>
   );
