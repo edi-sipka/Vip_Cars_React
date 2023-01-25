@@ -6,6 +6,7 @@ import { faCheck, faInfoCircle, faTriangleExclamation } from '@fortawesome/free-
 import { allCars, carStatus, getAllCars } from '../redux/cars/carSlice';
 import { addReservation, setStatusIdle } from '../redux/reservations/reservationSlice';
 import './Detail.css';
+import Navbar from './Navbar';
 
 const ReservationDetails = () => {
   const dispatch = useDispatch();
@@ -100,10 +101,7 @@ const ReservationDetails = () => {
           {car.name}
         </h1>
         <p ref={errRef} className={errMsg ? 'errmsg' : 'offscreen'} aria-live="assertive">{errMsg}</p>
-        <div className="res-container">
-          <div className="car-img-wrapper">
-            <img className="car-img" src={car.image} alt={car.name} />
-          </div>
+        <div className="res-container res">
           <form id="reserve" onSubmit={handleReservation}>
 
             {/*  Car */}
@@ -193,25 +191,33 @@ const ReservationDetails = () => {
   };
 
   return (
-    <main className="session">
-      { status === 'loading' ? (
-        <div className="loading-container">
-          <div className="load" />
-          <div id="loading-text">loading</div>
-        </div>
-      ) : (
-        <>
-          { cars.length < 1 ? (
-            <section>
-              <FontAwesomeIcon icon={faTriangleExclamation} className="thick" />
-              <h2 ref={userRef}>No car has been added yet!</h2>
-              <p>Add a car to make reservations</p>
-              <button type="button" onClick={() => navigate('/add_car')}>Add Car</button>
-            </section>
-          ) : (addRes())}
-        </>
-      ) }
-    </main>
+    <div className="App">
+      <Navbar />
+      <main className="main">
+        { status === 'loading' ? (
+          <section className="session">
+            <div className="load-wrap">
+              <div className="loading-container">
+                <div className="load" />
+                <div id="loading-text">loading</div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <div className="session">
+            { cars.length < 1 ? (
+              <section>
+                <FontAwesomeIcon icon={faTriangleExclamation} className="thick" />
+                <h2 ref={userRef}>No car has been added yet!</h2>
+                <p>Add a car to make reservations</p>
+                <button type="button" onClick={() => navigate('/add_car')}>Add Car</button>
+              </section>
+            ) : (addRes())}
+          </div>
+        ) }
+
+      </main>
+    </div>
   );
 };
 

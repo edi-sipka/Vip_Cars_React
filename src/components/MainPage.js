@@ -29,9 +29,11 @@ const MainPage = () => {
       <Navbar />
       <main className="main main-page">
         { status === 'loading' ? (
-          <div className="loading-container">
-            <div className="load" />
-            <div id="loading-text">loading</div>
+          <div className="load-wrap">
+            <div className="loading-container">
+              <div className="load" />
+              <div id="loading-text">loading</div>
+            </div>
           </div>
         ) : (
           <>

@@ -18,7 +18,6 @@ const Details = () => {
     <div className="App">
       <Navbar />
       <main className="main">
-        <h1>This is the Details page</h1>
         <div className="details-container">
           <div className="image-wrapper">
             <img className="car-img" src={car.image} alt={car.name} />

@@ -1,13 +1,13 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useSignOut } from 'react-auth-kit';
 import { signOutUser } from '../redux/user/userSlice';
 import NavFooter from './NavFooter';
 import Logo from '../assets/vip_cars_logo.png';
-import '../App.css';
 
-function Navbar() {
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const signOut = useSignOut();
@@ -42,33 +42,37 @@ function Navbar() {
   };
 
   return (
-    <header className="Navbar">
+    <header className="header">
       <img className="logo" src={Logo} alt="Vip Cars Logo" />
-      <div>
-        <ul className="navbar-ul">
-          {NavbarData.map((val) => (
-            <li
-              key={val.link}
+
+      <nav className={`nav ${isOpen ? 'open' : 'close'}`}>
+        {
+          NavbarData.map((nav) => (
+            <a
+              className="nav-link"
+              href={nav.link}
+              key={nav.name}
+              id={window.location.pathname === nav.link ? 'active' : ''}
+              onClick={() => setIsOpen(false)}
             >
-              <a
-                className="navbar-li"
-                id={window.location.pathname === val.link ? 'active' : ''}
-                href={val.link}
-              >
-                {val.name}
-              </a>
-            </li>
-          ))}
+              { nav.name }
+            </a>
+          ))
+        }
+        <button onClick={logout} className="sign-out-btn" type="button">Log Out</button>
+      </nav>
 
-        </ul>
-      </div>
-      <button onClick={logout} className="sign-out-btn" type="button">Log Out</button>
-      <div className="footer">
-        <NavFooter />
-      </div>
-
+      <NavFooter isOpen={isOpen} />
+      <button
+        type="button"
+        title="mobile menu open button"
+        className={`menu-btn ${isOpen ? 'open' : 'close'}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span className="bar" />
+      </button>
     </header>
   );
-}
+};
 
 export default Navbar;
