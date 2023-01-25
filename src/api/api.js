@@ -145,9 +145,7 @@ const api = {
     const response = await fetch(`${baseURL}/cars`, {
       headers: { Authorization: localStorage.getItem('authToken') },
     });
-    console.log('Response: ', response);
     const data = await response.json();
-    console.log('Data: ', data);
     return data;
   },
 
