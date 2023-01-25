@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
-  Routes, Route,
+  Routes, Route, useNavigate,
   // Outlet, Navigate,
 } from 'react-router-dom';
 import { RequireAuth } from 'react-auth-kit';
+import { getAuthUser } from './redux/user/userSlice';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import Details from './components/Details';
@@ -15,6 +18,15 @@ import AddCar from './components/AddCar';
 import DeleteCar from './components/DeleteCar';
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userAuthToken = localStorage.getItem('authToken') || false;
+
+  useEffect(() => {
+    dispatch(getAuthUser());
+    if (!userAuthToken) navigate('/login');
+  }, [userAuthToken]);
+
   return (
     <Routes>
       <Route path="/" element={<RequireAuth loginPath="/login"><MainPage /></RequireAuth>} />

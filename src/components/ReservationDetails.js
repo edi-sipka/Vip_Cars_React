@@ -104,9 +104,9 @@ const ReservationDetails = () => {
         <div className="res-container res">
           <form id="reserve" onSubmit={handleReservation}>
 
-            {/*  Car */}
+            {/* Car */}
             <label htmlFor="cars">
-              City:
+              Car:
               <br />
               <select
                 value={car}
