@@ -1,5 +1,5 @@
-// const baseURL = 'http://127.0.0.1:3000/api/v1'; // For Local Server
-const baseURL = 'https://vip-cars-api.onrender.com/api/v1'; // For Remote Server
+const baseURL = 'http://127.0.0.1:3000/api/v1'; // For Local Server
+// const baseURL = 'https://vip-cars-api.onrender.com/api/v1'; // For Remote Server
 
 // ALL API CALLS
 const api = {
