@@ -1,10 +1,11 @@
-const baseURL = 'http://127.0.0.1:3000/api/v1/';
+// const baseURL = 'http://127.0.0.1:3000/api/v1/'; // For Local Server
+const baseURL = 'https://vip-cars-api.onrender.com/api/v1'; // For Remote Server
 
 // ALL API CALLS
 const api = {
   // User registration API
   register: async (user) => {
-    const response = await fetch(`${baseURL}signup`, {
+    const response = await fetch(`${baseURL}/signup`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user }),
@@ -35,7 +36,7 @@ const api = {
 
   // User sign-in API
   sign_in: async (user) => {
-    const response = await fetch(`${baseURL}signin`, {
+    const response = await fetch(`${baseURL}/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ user }),
@@ -70,7 +71,7 @@ const api = {
 
   // User sign-out API
   sign_out: async () => {
-    const response = await fetch(`${baseURL}logout`, {
+    const response = await fetch(`${baseURL}/logout`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('authToken') },
     });
@@ -109,7 +110,7 @@ const api = {
 
   // Get Authenticated User
   getAuthUser: async () => {
-    const response = await fetch(`${baseURL}users`, {
+    const response = await fetch(`${baseURL}/users`, {
       headers: { Authorization: localStorage.getItem('authToken') },
     });
 
@@ -141,16 +142,18 @@ const api = {
 
   // Get all car
   getAllCars: async () => {
-    const response = await fetch(`${baseURL}cars`, {
+    const response = await fetch(`${baseURL}/cars`, {
       headers: { Authorization: localStorage.getItem('authToken') },
     });
+    console.log('Response: ', response);
     const data = await response.json();
+    console.log('Data: ', data);
     return data;
   },
 
   // Get a specific car
   getCar: async (carId) => {
-    const response = await fetch(`${baseURL}cars/${carId}`, {
+    const response = await fetch(`${baseURL}/cars/${carId}`, {
       headers: { Authorization: localStorage.getItem('authToken') },
     });
     const data = await response.json();
@@ -159,7 +162,7 @@ const api = {
 
   // Add a new car
   addCar: async (car) => {
-    const response = await fetch(`${baseURL}cars`, {
+    const response = await fetch(`${baseURL}/cars`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: localStorage.getItem('authToken') },
       body: JSON.stringify({ car }),
@@ -204,7 +207,7 @@ const api = {
 
   // Remove a specific car
   deleteCar: async (carId) => {
-    const response = await fetch(`${baseURL}cars/${carId}`, {
+    const response = await fetch(`${baseURL}/cars/${carId}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('authToken') },
     });
@@ -214,7 +217,7 @@ const api = {
 
   // Get all reservations
   getAllReservation: async (userId) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations`,
+    const response = await fetch(`${baseURL}/users/${userId}/reservations`,
       {
         headers: { Authorization: localStorage.getItem('authToken') },
       });
@@ -224,7 +227,7 @@ const api = {
 
   // Get a specific reservation
   getReservation: async (userId, resId) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`,
+    const response = await fetch(`${baseURL}/users/${userId}/reservations/${resId}`,
       {
         headers: { Authorization: localStorage.getItem('authToken') },
       });
@@ -234,7 +237,7 @@ const api = {
 
   // Add a new reservation
   addReservation: async (userId, reservation) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations`, {
+    const response = await fetch(`${baseURL}/users/${userId}/reservations`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: localStorage.getItem('authToken') },
       body: JSON.stringify({ reservation }),
@@ -245,7 +248,7 @@ const api = {
 
   // Remove a reservation
   removeReservation: async (userId, resId) => {
-    const response = await fetch(`${baseURL}users/${userId}/reservations/${resId}`, {
+    const response = await fetch(`${baseURL}/users/${userId}/reservations/${resId}`, {
       method: 'DELETE',
       headers: { Authorization: localStorage.getItem('authToken') },
     });

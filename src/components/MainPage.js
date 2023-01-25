@@ -75,7 +75,7 @@ const MainPage = () => {
                     }}
                     className="mySwiper"
                   >
-                    { cars.map((car) => (
+                    { cars?.map((car) => (
                       <SwiperSlide key={car.id}>
                         <a href={`/cars/${car.id}`} className="car">
                           <div className="car-img-wrap">
