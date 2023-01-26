@@ -1,28 +1,45 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  Routes, Route, useNavigate,
+  // Outlet, Navigate,
+} from 'react-router-dom';
+import { RequireAuth } from 'react-auth-kit';
+import { getAuthUser } from './redux/user/userSlice';
+import LoginPage from './components/LoginPage';
+import RegisterPage from './components/RegisterPage';
+import Details from './components/Details';
+import MyReservations from './components/Reservation';
+import ReservePage from './components/ReservePage';
+import ReservationDetails from './components/ReservationDetails';
+import MainPage from './components/MainPage';
 import './App.css';
+import AddCar from './components/AddCar';
+import DeleteCar from './components/DeleteCar';
 
 function App() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userAuthToken = localStorage.getItem('authToken') || false;
+
+  useEffect(() => {
+    dispatch(getAuthUser());
+    if (!userAuthToken) navigate('/login');
+  }, [userAuthToken]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {' '}
-          <code>src/App.js</code>
-          {' '}
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<RequireAuth loginPath="/login"><MainPage /></RequireAuth>} />
+      <Route path="/cars/:id" element={<RequireAuth loginPath="/login"><Details /></RequireAuth>} />
+      <Route path="/reservations" element={<RequireAuth loginPath="/login"><MyReservations /></RequireAuth>} />
+      <Route path="/reserve/:id" element={<RequireAuth loginPath="/login"><ReservePage /></RequireAuth>} />
+      <Route path="/reserve" element={<RequireAuth loginPath="/login"><ReservationDetails /></RequireAuth>} />
+      <Route path="/add_car" element={<RequireAuth loginPath="/login"><AddCar /></RequireAuth>} />
+      <Route path="/delete_car" element={<RequireAuth loginPath="/login"><DeleteCar /></RequireAuth>} />
+
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/sign_up" element={<RegisterPage />} />
+    </Routes>
   );
 }
 

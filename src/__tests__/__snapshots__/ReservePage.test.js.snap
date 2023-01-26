@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component Should render the proper Login component 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <main
+        class="session"
+      >
+        <section>
+          <h1>
+            Reserve
+             
+          </h1>
+          <p
+            aria-live="assertive"
+            class="offscreen"
+          />
+          <div
+            class="res-container"
+          >
+            <div
+              class="car-img-wrapper"
+            >
+              <img
+                class="car-img"
+              />
+            </div>
+            <form
+              id="reserve"
+            >
+              <label
+                for="cities"
+              >
+                City:
+                <br />
+                <select
+                  id="cities"
+                  name="cities"
+                >
+                  <option
+                    value="London"
+                  >
+                    London
+                  </option>
+                  <option
+                    value="New York"
+                  >
+                    New York
+                  </option>
+                  <option
+                    value="Berlin"
+                  >
+                    Berlin
+                  </option>
+                  <option
+                    value="Paris"
+                  >
+                    Paris
+                  </option>
+                  <option
+                    value="Lagos"
+                  >
+                    Lagos
+                  </option>
+                  <option
+                    value="Nairobi"
+                  >
+                    Nairobi
+                  </option>
+                  <option
+                    value="Cape Town"
+                  >
+                    Cape Town
+                  </option>
+                </select>
+              </label>
+              <label
+                for="reserveDate"
+              >
+                Reserve Date:
+                <br />
+                <input
+                  aria-invalid="false"
+                  class="reserve-date"
+                  id="reserveDate"
+                  type="date"
+                  value="2023-01-24"
+                />
+              </label>
+              <label
+                for="returnDate"
+              >
+                Return Date:
+                <br />
+                <input
+                  aria-describedby="returnDate"
+                  aria-invalid="false"
+                  class="valid-input"
+                  id="returnDate"
+                  required=""
+                  type="date"
+                  value="2023-01-25"
+                />
+              </label>
+              <p
+                class="offscreen"
+                id="returnDate"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="svg-inline--fa fa-circle-info "
+                  data-icon="circle-info"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Return date must be on
+                <br />
+                a later date to Reserve date
+              </p>
+              <br />
+              <button
+                type="submit"
+              >
+                Reserve
+              </button>
+            </form>
+          </div>
+        </section>
+      </main>
+      ,
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="session"
+    >
+      <section>
+        <h1>
+          Reserve
+           
+        </h1>
+        <p
+          aria-live="assertive"
+          class="offscreen"
+        />
+        <div
+          class="res-container"
+        >
+          <div
+            class="car-img-wrapper"
+          >
+            <img
+              class="car-img"
+            />
+          </div>
+          <form
+            id="reserve"
+          >
+            <label
+              for="cities"
+            >
+              City:
+              <br />
+              <select
+                id="cities"
+                name="cities"
+              >
+                <option
+                  value="London"
+                >
+                  London
+                </option>
+                <option
+                  value="New York"
+                >
+                  New York
+                </option>
+                <option
+                  value="Berlin"
+                >
+                  Berlin
+                </option>
+                <option
+                  value="Paris"
+                >
+                  Paris
+                </option>
+                <option
+                  value="Lagos"
+                >
+                  Lagos
+                </option>
+                <option
+                  value="Nairobi"
+                >
+                  Nairobi
+                </option>
+                <option
+                  value="Cape Town"
+                >
+                  Cape Town
+                </option>
+              </select>
+            </label>
+            <label
+              for="reserveDate"
+            >
+              Reserve Date:
+              <br />
+              <input
+                aria-invalid="false"
+                class="reserve-date"
+                id="reserveDate"
+                type="date"
+                value="2023-01-24"
+              />
+            </label>
+            <label
+              for="returnDate"
+            >
+              Return Date:
+              <br />
+              <input
+                aria-describedby="returnDate"
+                aria-invalid="false"
+                class="valid-input"
+                id="returnDate"
+                required=""
+                type="date"
+                value="2023-01-25"
+              />
+            </label>
+            <p
+              class="offscreen"
+              id="returnDate"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-circle-info "
+                data-icon="circle-info"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"
+                  fill="currentColor"
+                />
+              </svg>
+              Return date must be on
+              <br />
+              a later date to Reserve date
+            </p>
+            <br />
+            <button
+              type="submit"
+            >
+              Reserve
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    ,
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
