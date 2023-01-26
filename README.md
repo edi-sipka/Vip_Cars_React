@@ -9,28 +9,29 @@
 
 # 📗 Table of Contents
 
-- [📗 Table of Contents](#-table-of-contents)
-- [📖 \[VIP\_CARS\_RAILS\] ](#-vip_cars_rails-)
-  - [:card\_index: UML Diagram ](#card_index-uml-diagram-)
-  - [🛠 Built With ](#-built-with-)
+- [📗 Table of Contents](#table-of-contents)
+- [📖 \[VIP\_CARS\_RAILS\] ](#vip_cars_rails)
+  - [:card\_index: UML Diagram ](#card_index-uml-diagram)
+  - [🛠 Built With ](#built-with)
     - [Tech Stack ](#tech-stack-)
-    - [Key Features ](#key-features-)
-  - [🗎 API Documentation](#api-docs)
-  - [🚀 Live Demo ](#-live-demo-)
-  - [💻 Getting Started ](#-getting-started-)
+    - [Key Features ](#key-features)
+  - [🗎 Kanban-Board](#kanban-board)
+  - [🚀 Project Preview ](#preview)
+  - [🚀 Live Demo ](#live-demo)
+  - [💻 Getting Started ](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
     - [Run tests](#run-tests)
     - [Deployment](#deployment)
-  - [👥 Authors ](#-authors-)
-  - [🔭 Future Features ](#-future-features-)
-  - [🤝 Contributing ](#-contributing-)
-  - [⭐️ Show your support ](#️-show-your-support-)
-  - [🙏 Acknowledgments ](#-acknowledgments-)
-  - [❓ FAQ ](#-faq-)
-  - [📝 License ](#-license-)
+  - [👥 Authors ](#authors)
+  - [🔭 Future Features ](#future-features)
+  - [🤝 Contributing ](#contributing)
+  - [⭐️ Show your support ](#️show-your-support)
+  - [🙏 Acknowledgments ](#acknowledgments)
+  - [❓ FAQ ](#faq)
+  - [📝 License ](#license)
 
 
 # 📖 [VIP_CARS_RAILS] <a name="about-project"></a>
@@ -78,10 +79,33 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+<!-- Kanban Board -->
+## <img src="https://cdn-icons-png.flaticon.com/512/5360/5360804.png" width="23" height="20"/> Kanban Board <a name="kanban-board"></a>
+- We are a group of 5 team members, and our Kanban board is diveded in two parts:
+
+  -- Backend
+
+  -- Frontend
+- Check here Kanban Board [Kanban Board](https://github.com/users/edi-sipka/projects/3)
+- Check here Kanban Board Backend screenshot: [Kanban Board Backend](https://prnt.sc/tbnaJrPgezh0)
+- Check here Kanban Board Frontend screenshot: [Kanban Board Frontend](https://prnt.sc/egjQAW-izqi0)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- Rails Backend -->
 ## <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/ruby-on-rails-icon.png" width="23" height="20"/> Rails Backend <a name="rails-backend"></a>
 - Backend part of the project [VIP_Cars_Backend](https://github.com/edi-sipka/Vip_Cars_Rails)
+
+
+## 🚀 App Preview <a name="preview"></a>
+
+![Preview 1](./src/assets/preview1.png)
+![Preview 2](./src/assets/preview2.png)
+![Preview 3](./src/assets/preview3.png)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
@@ -97,7 +121,7 @@ To get a local copy up and running, follow these steps.
 In order to run this project you need:
 `Git` and `Node.js` installed on your computer.
 
-- For windows users you can download Git from here: https://git-scm.com/download/win and Node.js from here: https://nodejs.org/en/download/
+- For Windows users you can download Git from here: https://git-scm.com/download/win and Node.js from here: https://nodejs.org/en/download/
 - For Mac users you can download Git from here: https://git-scm.com/download/mac and Node.js from here: https://nodejs.org/en/download/
 - For Linux users you can download Git from here: https://git-scm.com/download/linux and Node.js from here: https://nodejs.org/en/download/
 
